@@ -3,6 +3,7 @@ package Controller;
 import Model.graph.User;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class UserController {
 
@@ -34,7 +35,7 @@ public class UserController {
     public void removeSpecialty(String newSpecialty){
         mainUser.removeSpecialties(newSpecialty);
     }
-    public ArrayList<String> getSpecialties(){
+    public List<String> getSpecialties(){
         return mainUser.getSpecialties();
     }
 

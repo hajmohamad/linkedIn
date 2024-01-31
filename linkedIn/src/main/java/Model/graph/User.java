@@ -2,6 +2,7 @@ package Model.graph;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class User {
     // add  private variable
@@ -83,7 +84,7 @@ public class User {
         Workplace = workplace;
     }
 
-    public ArrayList<String> getSpecialties() {
+    public List<String> getSpecialties() {
         return specialties;
     }
 
