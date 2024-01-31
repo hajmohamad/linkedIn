@@ -2,7 +2,7 @@ package Model.graph;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Vertex {
+public class Vertex { // راس
     private final User element;
     private final Map<Vertex, Edge> edges;
 
