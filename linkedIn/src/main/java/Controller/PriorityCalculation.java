@@ -1,13 +1,10 @@
 package Controller;
 
-import Model.graph.AdjacencyMapGraph;
 import Model.graph.User;
-import Model.graph.Vertex;
-import com.example.linkedin.HelloApplication;
 
 import java.util.*;
 
-enum Priority {name , lastName , birthDay , city , studyField , workPlace , specialties , connection}
+enum Priority {name , lastName , birthDay , birthLocation, field, workPlace , specialties , connection}
 
 class ScoreUser {
     private User user ;
@@ -22,38 +19,31 @@ class ScoreUser {
     public User getUser() {
         return user;
     }
-    public void setUser(User user) {
-        this.user = user;
-    }
     public double getScore() {
         return score;
-    }
-    public void setScore(double score) {
-        this.score = score;
     }
 }
 
 public class PriorityCalculation {
-
-    AdjacencyMapGraph graph = new AdjacencyMapGraph<>() ; // برای استفاده دستی ، قابل حذف و جایگزین
-
-    String ID ;
     String name ;
     String lastName ;
     String  birthDay ;
-    String city ;
-    String studyField ;
+    String birthLocation ;
+    String field ;
     String workPlace ;
     List<String> specialties ;
-    List<User> connection ;
     List<Priority> myPriority ;
     public List<User> suggestions (User inputUser , int order) {
+        name= inputUser.getName() ;
+        lastName= inputUser.getLastname() ;
+        birthDay= inputUser.getBirthday();
+        birthLocation= inputUser.getBirthLocation();
+        field= inputUser.getField() ;
+        workPlace= inputUser.getWorkplace();
+        specialties = inputUser.getSpecialties();
         List<ScoreUser> bord = new ArrayList<>() ;
 
-        for (Object ob : graph.vertices()) {
-            Vertex vertex = (Vertex) ob;
-            User user = (User) vertex.getElement();
-
+        for (User user : admin.getAllUser()) {
             ScoreUser scoreUser = nameScore(user) ;  // شروع محاسبه ضریب اولیت هر فرد
             scoreUser.addScore(lastNameScore(user));
             scoreUser.addScore(birthDayScore(user));
@@ -64,6 +54,7 @@ public class PriorityCalculation {
             scoreUser.addScore(connectionScore(user));
             bord.add(scoreUser) ;
         }
+        List<ScoreUser> friends = goConnection(inputUser , 5) ;
         List<User> result = new ArrayList<>() ;
         bord.stream().sorted();
         for (int i = 0 ; i < order ; i++) {
@@ -71,7 +62,6 @@ public class PriorityCalculation {
         }
         return result ;
     }
-
     public ScoreUser nameScore (User target) {
         int n = myPriority.indexOf(Priority.name); // ضریب اولویت
         int score = 0 ; // نمره دریافتی
@@ -98,17 +88,17 @@ public class PriorityCalculation {
         return score;
     }
     public double cityScore (User target) {
-        int n = myPriority.indexOf(Priority.city); // ضریب اولویت
+        int n = myPriority.indexOf(Priority.birthLocation); // ضریب اولویت
         int score = 0 ; // نمره دریافتی
-        if (target.getBirthLocation().equals(city)) {
+        if (target.getBirthLocation().equals(birthLocation)) {
             score += (10^n) ;
         }
         return score;
     }
     public double studyFieldScore (User target) {
-        int n = myPriority.indexOf(Priority.studyField); // ضریب اولویت
+        int n = myPriority.indexOf(Priority.field); // ضریب اولویت
         int score = 0 ; // نمره دریافتی
-        if (target.getField().equals(studyField)) {
+        if (target.getField().equals(field)) {
             score += (10^n) ;
         }
         return score;
@@ -135,6 +125,26 @@ public class PriorityCalculation {
     }
     public double connectionScore (User target) {
         return 0;
+    }
+    AdminController admin = new AdminController() ;
+    public List<ScoreUser> goConnection (User person , int height) {
+        List<ScoreUser> connections = new ArrayList<>() ;
+        if (height > 1) {
+            for (User user : admin.getAllUserConnections(person)) {
+                List <ScoreUser> friends = goConnection(user , height -1) ;
+                connections.addAll(friends) ;
+                connections.add(new ScoreUser(user , height));
+            }
+            return connections ;
+        } else if (height == 1){
+            List<ScoreUser> result = new ArrayList<>() ;
+            for (User user : admin.getAllUserConnections(person)) {
+                result.add(new ScoreUser(user , height));
+            }
+            return result;
+        } else {
+            return null ;
+        }
     }
     public double Similarity (String word , String name) {
         return 0 ;
