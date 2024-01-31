@@ -1,5 +1,5 @@
 package Model.graph;
-public class Edge {
+public class Edge { // یال
     private final Vertex[] endpoints;
     private final String element;
     public Edge(Vertex u, Vertex v, String element) {
