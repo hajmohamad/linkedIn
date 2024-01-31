@@ -2,218 +2,177 @@ package Model.graph;
 
 import java.util.*;
 
-public class AdjacencyList {
-
-    private final List<Vertex> vertices;
-    private final List<Edge> edges;
-    private HashMap<String, HashSet<Vertex>> components;
+public class AdjacencyList<Vertex, Edge>implements Graph<Vertex, Edge> {
+    private Map<Vertex, List<Edge>> outgoingEdges;
+    private Map<Vertex, List<Edge>> incomingEdges;
+    private Map<Edge, Vertex> edgeToSource;
+    private Map<Edge, Vertex> edgeToTarget;
+    private Set<Vertex> vertices;
+    private Set<Edge> edges;
 
     public AdjacencyList() {
-        this.vertices = new ArrayList<>();
-        this.edges = new ArrayList<>();
+        outgoingEdges = new HashMap<>();
+        incomingEdges = new HashMap<>();
+        edgeToSource = new HashMap<>();
+        edgeToTarget = new HashMap<>();
+        vertices = new HashSet<>();
+        edges = new HashSet<>();
     }
 
-    // Methods ---------------------------------------------------------------------------------------------------------
-
+    @Override
     public int numVertices() {
         return vertices.size();
     }
 
+    @Override
+    public Iterable<Vertex> vertices() {
+        return vertices;
+    }
+
+    @Override
     public int numEdges() {
         return edges.size();
     }
 
-    public List<Vertex> vertices() {
-        return vertices;
-    }
-
-    public List<Edge> edges() {
+    @Override
+    public Iterable<Edge> edges() {
         return edges;
     }
 
-    public int degree(Vertex v) {
-        return v.getEdges().size();
-    }
-
-    public Iterable<Edge> edges(Vertex v) {
-        return v.getEdges().values();
-    }
-
+    @Override
     public Edge getEdge(Vertex u, Vertex v) {
-        return u.getEdges().get(v);
-    }
-
-    public Vertex[] endVertices(Edge e) {
-        return e.getEndpoints();
-    }
-
-    public Vertex opposite(Vertex v, Edge e) {
-        Vertex[] endpoints = e.getEndpoints();
-        if (endpoints[0] == v) {
-            return endpoints[1];
-        } else if (endpoints[1] == v) {
-            return endpoints[0];
-        } else {
-            throw new IllegalArgumentException("v is not incident to this edge");
+        List<Edge> outgoing = outgoingEdges.get(u);
+        if (outgoing == null) {
+            return null;
         }
-    }
-
-    public Boolean isAdjacent(Vertex u, Vertex v) {
-        return u.getEdges().containsKey(v);
-    }
-
-    public Boolean isConnected(Vertex u, Vertex v) {
-        HashSet<Vertex> visited = new HashSet<>();
-        HashSet<Vertex> componentSet = new HashSet<>();
-
-        DFS(visited, u, componentSet);
-        return componentSet.contains(v);
-    }
-
-    public Vertex insertVertex(User element) {
-        Vertex v = new Vertex(element);
-        vertices.add(v);
-        return v;
-    }
-
-    public Edge insertEdge(Vertex u, Vertex v, String element) {
-        if (getEdge(u, v) == null) {
-            Edge e = new Edge(u, v, element);
-            edges.add(e);
-            u.getEdges().put(v, e);
-            v.getEdges().put(u, e);
-            return e;
-        } else {
-            return getEdge(u, v);
+        for (Edge e : outgoing) {
+            if (edgeToTarget.get(e).equals(v)) {
+                return e;
+            }
         }
-
-    }
-
-    public Vertex getVertex(String id) {
-//        for (Vertex v : vertices) {
-//            if (Objects.equals(v.getElement().getId(), id)) {
-//                return v;
-//            }
-//        }
         return null;
     }
 
-    public void printBeautified() {
-        for (Vertex v : vertices) {
-            System.out.println(v.getElement() + " -> " + v.getEdges().keySet().stream().map(Vertex::getElement).toList());
+    @Override
+    public List<Vertex> endVertices(Edge e) {
+        List<Vertex> endVertices = new ArrayList<>();
+        endVertices.add(edgeToSource.get(e));
+        endVertices.add(edgeToTarget.get(e));
+        return endVertices;
+    }
+
+    @Override
+    public Vertex opposite(Vertex v, Edge e) {
+        if (edgeToSource.get(e).equals(v)) {
+            return edgeToTarget.get(e);
+        } else if (edgeToTarget.get(e).equals(v)) {
+            return edgeToSource.get(e);
+        } else {
+            return null;
         }
     }
 
+    @Override
+    public int outDegree(Vertex v) {
+        List<Edge> outgoing = outgoingEdges.get(v);
+        if (outgoing == null) {
+            return 0;
+        }
+        return outgoing.size();
+    }
+
+    @Override
+    public int inDegree(Vertex v) {
+        List<Edge> incoming = incomingEdges.get(v);
+        if (incoming == null) {
+            return 0;
+        }
+        return incoming.size();
+    }
+
+    @Override
+    public Iterable<Edge> outgoingEdges(Vertex v) {
+        List<Edge> outgoing = outgoingEdges.get(v);
+        if (outgoing == null) {
+            return Collections.emptyList();
+        }
+        return outgoing;
+    }
+
+    @Override
+    public Iterable<Edge> incomingEdges(Vertex v) {
+        List<Edge> incoming = incomingEdges.get(v);
+        if (incoming == null) {
+            return Collections.emptyList();
+        }
+        return incoming;
+    }
+
+    @Override
+    public Vertex insertVertex(Vertex x) {
+        vertices.add(x);
+        return x;
+    }
+
+    @Override
+    public Edge insertEdge(Vertex u, Vertex v, Edge x) {
+        if (!vertices.contains(u) || !vertices.contains(v)) {
+            throw new IllegalArgumentException("Vertices must be in the graph");
+        }
+        outgoingEdges.computeIfAbsent(u, k -> new ArrayList<>()).add(x);
+        incomingEdges.computeIfAbsent(v, k -> new ArrayList<>()).add(x);
+        edgeToSource.put(x, u);
+        edgeToTarget.put(x, v);
+        edges.add(x);
+        return x;
+    }
+
+
+    @Override
     public void removeVertex(Vertex v) {
-        for (Edge e : v.getEdges().values())
-            removeEdge(e);
-
-        for (Edge e : v.getEdges().values())
-            removeEdge(e);
-
+        if (!vertices.contains(v)) {
+            throw new IllegalArgumentException("Vertex must be in the graph");
+        }
+        // Remove all outgoing edges
+        List<Edge> outgoing = outgoingEdges.get(v);
+        if (outgoing != null) {
+            for (Edge e : outgoing) {
+                removeEdge(e);
+            }
+        }
+        // Remove all incoming edges
+        List<Edge> incoming = incomingEdges.get(v);
+        if (incoming != null) {
+            for (Edge e : incoming) {
+                removeEdge(e);
+            }
+        }
+        // Remove the vertex itself
         vertices.remove(v);
+        outgoingEdges.remove(v);
+        incomingEdges.remove(v);
     }
 
+    @Override
     public void removeEdge(Edge e) {
-        Vertex[] endpoints = e.getEndpoints();
-        endpoints[0].getEdges().remove(endpoints[1]);
-        endpoints[1].getEdges().remove(endpoints[0]);
+        if (!edges.contains(e)) {
+            throw new IllegalArgumentException("Edge must be in the graph");
+        }
+        Vertex u = edgeToSource.get(e);
+        List<Edge> outgoing = outgoingEdges.get(u);
+        outgoing.remove(e);
+        if (outgoing.isEmpty()) {
+            outgoingEdges.remove(u);
+        }
+        Vertex v = edgeToTarget.get(e);
+        List<Edge> incoming = incomingEdges.get(v);
+        incoming.remove(e);
+        if (incoming.isEmpty()) {
+            incomingEdges.remove(v);
+        }
+
         edges.remove(e);
-    }
-
-    public HashMap<String, HashSet<Vertex>> getComponents() {
-        return components;
-    }
-
-    //----------------------------------------------------------------------------------------
-
-    public void identifyComponentsDFS() {
-
-        components = new HashMap<>();
-
-        HashSet<Vertex> visited = new HashSet<>();
-        HashSet<Vertex> componentSet = new HashSet<>();
-
-        Iterator<Vertex> it = vertices.iterator();
-        Vertex current = it.next();
-
-        int i = 1;
-        while(visited.size() != numVertices())
-        {
-            DFS(visited, current, componentSet);
-            components.put("Component-" + i, componentSet);
-            i++;
-
-            componentSet = new HashSet<>();
-            while(it.hasNext() && visited.contains(current))
-            {
-                current = it.next();
-            }
-        }
-    }
-    public void DFS(HashSet<Vertex> visited, Vertex u, HashSet<Vertex> componentSet) {
-        visited.add(u);
-        componentSet.add(u);
-
-        for (Vertex v : u.getEdges().keySet()) {
-            if(!visited.contains(v))
-            {
-                componentSet.add(v);
-                DFS(visited, v, componentSet);
-            }
-        }
-    }
-
-    public List<List<Vertex>> bfsLevels(Vertex s, int maxLevel) {
-
-        Set<Vertex> visited = new HashSet<>();
-        List<List<Vertex>> levels = new ArrayList<>();
-        List<Vertex> currentLevel = new ArrayList<>();
-        currentLevel.add(s);
-        visited.add(s);
-
-        while (!currentLevel.isEmpty()) {
-
-            levels.add(currentLevel);
-            List<Vertex> nextLevel = new ArrayList<>();
-
-            for (Vertex u : currentLevel) {
-                for (Edge e : edges(u)) {
-                    Vertex v = opposite(u, e);
-                    if (!visited.contains(v)) {
-                        visited.add(v);
-                        nextLevel.add(v);
-                    }
-                }
-            }
-            currentLevel = nextLevel;
-
-            if (levels.size() == maxLevel) {
-                break;
-            }
-        }
-
-        return levels;
-    }
-
-    public Set<Vertex> BFS(Vertex s) {
-
-        Set<Vertex> known = new HashSet<>();
-        Queue<Vertex> q = new LinkedList<>();
-        known.add(s);
-        q.add(s);
-
-        while (!q.isEmpty()) {
-            Vertex u = q.remove();
-            for (Edge e : this.edges(u)) {
-                Vertex v = this.opposite(u, e);
-                if (!known.contains(v)) {
-                    known.add(v);
-                    q.add(v);
-                }
-            }
-        }
-
-        return known;
+        edgeToSource.remove(e);
+        edgeToTarget.remove(e);
     }
 }

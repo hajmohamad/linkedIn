@@ -9,7 +9,7 @@ public interface Graph<Vertex, Edge> {
     int numEdges();
     Iterable<Edge> edges();
     Edge getEdge(Vertex u, Vertex v);
-    Vertex[] endVertices(Edge e);
+    List<Vertex> endVertices(Edge e);
     Vertex opposite(Vertex v, Edge e);
     int outDegree(Vertex v);
     int inDegree(Vertex v);
