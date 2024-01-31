@@ -132,18 +132,14 @@ public class AdjacencyMapGraph<Vertex, Edge> implements Graph<Vertex, Edge> {
     @Override
     public Edge insertEdge(Vertex u, Vertex vertex, Edge edge) {
         VertexInfo<Vertex, Edge> vertexInfo = vertices.get(u);
-        VertexInfo<Vertex, Edge> VERTEX=vertices.get(vertex);
-        if (vertexInfo == null||VERTEX==null)
+        if (vertexInfo == null)
             return null;
 
         if (vertexInfo.outgoingEdges.containsKey(vertex)) {
             return null; // Edge already exists
         }
-
-        VERTEX.outgoingEdges.put(u, edge);
         vertexInfo.outgoingEdges.put(vertex, edge);
         edges.add(edge);
-
         return edge;
     }
 
@@ -161,6 +157,12 @@ public class AdjacencyMapGraph<Vertex, Edge> implements Graph<Vertex, Edge> {
         }
     }
 
+    public List<Vertex> getNeighbors(Vertex vertex) {
+        VertexInfo<Vertex, Edge> vertexInfo = vertices.get(vertex);
+        if (vertexInfo == null)
+            return null;
+        return new ArrayList<>(vertexInfo.outgoingEdges.keySet());
+    }
 
     @Override
     public void removeEdge(Edge edge) {
