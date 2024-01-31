@@ -8,16 +8,15 @@ public class User {
     private  String ID;
     private  String name;
     private  String birthday;
-    private Date lastname;
+    private String lastname;
     private String BirthLocation;
     private String field;
     private String Workplace;
     private ArrayList<String> specialties;
-    private ArrayList<String> ConnectionsId;
-    private ArrayList<User> Connections;
 
 
-    public User(String ID, String name, String birthday, Date lastname, String birthLocation, String field, String workplace) {
+
+    public User(String ID, String name, String birthday, String lastname, String birthLocation, String field, String workplace) {
         this.ID = ID;
         this.name = name;
         this.birthday = birthday;
@@ -25,8 +24,6 @@ public class User {
         BirthLocation = birthLocation;
         this.field = field;
         Workplace = workplace;
-        ConnectionsId = new ArrayList<>();
-        Connections = new ArrayList<>();
         specialties = new ArrayList<>();
     }
 
@@ -54,11 +51,11 @@ public class User {
         this.birthday = birthday;
     }
 
-    public Date getLastname() {
+    public String getLastname() {
         return lastname;
     }
 
-    public void setLastname(Date lastname) {
+    public void setLastname(String lastname) {
         this.lastname = lastname;
     }
 
@@ -93,29 +90,7 @@ public class User {
     public void addSpecialties(String specialties) {
         this.specialties.add(specialties) ;
     }
-
-    public ArrayList<String> getConnectionsId() {
-        return ConnectionsId;
+    public void removeSpecialties(String special) {
+        specialties.remove(special);
     }
-
-    public void addConnectionsId(String connectionsId) {
-        ConnectionsId.add(connectionsId);
-    }
-    public void removeConnectionsId(String id) {
-        ConnectionsId.remove(id);
-    }
-
-    public ArrayList<User> getConnections() {
-        return Connections;
-    }
-
-    public void setConnections(User connections) {
-        addConnectionsId(connections.getID());
-        Connections.add(connections);
-    }
-    public void removeConnections(User connections) {
-        removeConnectionsId(connections.getID());
-        Connections.remove(connections);
-    }
-
 }
