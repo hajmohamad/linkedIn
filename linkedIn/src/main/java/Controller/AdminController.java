@@ -43,7 +43,19 @@ public class AdminController {
    public boolean hasConnection (User user1, User user2){
        return Graph.getEdge(user1, user2) != null;
    }
-
-
+   public boolean login(String username, String password){
+       List<User> list=getAllUser();
+       for (User user:list){
+           if (user.getName().equals(username) && user.getPassword().equals(password)) {
+               UserController.getInstance();
+               UserController.getInstance().setMainUser(user);
+               return  true;
+           }
+       }
+       return false;
+   }
+   public void logout(){
+       UserController.getInstance().setMainUser(null);
+   }
 
 }
