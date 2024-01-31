@@ -67,7 +67,7 @@ public class AdjacencyMatrix implements Graph {
     }
 
     @Override
-    public Object[] endVertices(Object e) {
+    public Vertex[] endVertices(Object e) {
         Vertex[] result = new Vertex[2] ;
         boolean found = false ;
         for (int i = 0; i < numVertex ; i++) {
@@ -83,7 +83,11 @@ public class AdjacencyMatrix implements Graph {
                 break;
             }
         }
-        return result;
+        if (found) {
+            return result;
+        } else {
+            return null ;
+        }
     }
 
     @Override
