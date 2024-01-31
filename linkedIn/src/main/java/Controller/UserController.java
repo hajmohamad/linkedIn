@@ -66,5 +66,15 @@ public class UserController {
     public User getMainUser(){
         return mainUser;
     }
+    public String getPassword(){
+        return mainUser.getPassword();
+    }
+    public void setPassword(String password){
+        mainUser.setPassword(password);
+    }
+    public void setProfilePicture(String path){
+        mainUser.setProfilePicture(path);
+    }
+
 
 }

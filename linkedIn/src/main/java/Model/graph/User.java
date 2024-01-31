@@ -1,23 +1,31 @@
 package Model.graph;
 
+import com.example.linkedin.HelloApplication;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-public class User {
+public class User extends ImageView {
     // add  private variable
     private  String ID;
     private  String name;
+    private  String password;
     private  String birthday;
     private String lastname;
     private String BirthLocation;
     private String field;
     private String Workplace;
-    private ArrayList<String> specialties;
+    private List<String> specialties;
 
 
 
-    public User(String ID, String name, String birthday, String lastname, String birthLocation, String field, String workplace) {
+    public User(String ID,String password, String name, String birthday, String lastname, String birthLocation, String field, String workplace) {
+        super.setImage(new Image(HelloApplication.class.getResource("/image/icon/user.png").toString()));
         this.ID = ID;
+        this.password = password;
         this.name = name;
         this.birthday = birthday;
         this.lastname = lastname;
@@ -83,7 +91,7 @@ public class User {
         Workplace = workplace;
     }
 
-    public ArrayList<String> getSpecialties() {
+    public List<String> getSpecialties() {
         return specialties;
     }
 
@@ -93,4 +101,17 @@ public class User {
     public void removeSpecialties(String special) {
         specialties.remove(special);
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    public void setProfilePicture(String path){
+        this.setImage(new Image(HelloApplication.class.getResource(path).toString()));
+    }
+
+
 }
