@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane prefHeight="650.0" prefWidth="319.0" style="-fx-background-color: none; -fx-background-radius: 20px;" stylesheets="@startCss.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.linkedin.loginFxmlController">
    <children>
@@ -16,27 +16,46 @@
       </ImageView>
       <AnchorPane layoutX="11.0" layoutY="51.0" prefHeight="545.0" prefWidth="287.0" style="-fx-background-color: #ffffff; -fx-background-radius: 30px;" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0">
          <children>
-            <ImageView fitHeight="132.0" fitWidth="228.0" layoutX="30.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@image/icon/LinkedINlogo.png" />
-               </image>
-            </ImageView>
-            <AnchorPane fx:id="ap_login" layoutX="33.0" layoutY="331.0" prefHeight="52.0" prefWidth="222.0" style="-fx-background-color: #3a92e4; -fx-background-radius: 28px;" stylesheets="@startCss.css">
+            <AnchorPane prefHeight="545.0" prefWidth="287.0">
                <children>
-                  <Label alignment="CENTER" layoutX="41.0" layoutY="4.0" prefHeight="45.0" prefWidth="140.0" text="login">
+                  <Label layoutX="27.0" layoutY="181.0" prefHeight="26.0" prefWidth="102.0" text="UserName">
                      <font>
-                        <Font name="Bauhaus 93" size="31.0" />
+                        <Font name="Constantia" size="20.0" />
                      </font>
                   </Label>
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="ap_signup" layoutX="33.0" layoutY="401.0" prefHeight="52.0" prefWidth="222.0" style="-fx-background-color: #3a92e4; -fx-background-radius: 28px;" stylesheets="@startCss.css">
-               <children>
-                  <Label alignment="CENTER" layoutX="41.0" layoutY="4.0" prefHeight="45.0" prefWidth="140.0" text="signup" AnchorPane.bottomAnchor="3.0">
+                  <Label layoutX="27.0" layoutY="260.0" prefHeight="26.0" prefWidth="102.0" text="PassWord">
                      <font>
-                        <Font name="Bauhaus 93" size="31.0" />
+                        <Font name="Constantia" size="20.0" />
                      </font>
                   </Label>
+                  <Label layoutX="23.0" layoutY="101.0" prefHeight="49.0" prefWidth="110.0" text="Login">
+                     <font>
+                        <Font name="Constantia Bold" size="30.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="86.0" fitWidth="211.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/icon/LinkedINlogo.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="27.0" layoutY="150.0" prefHeight="26.0" prefWidth="233.0" text="Stay Updated on your professional world" />
+                  <ImageView fitHeight="441.0" fitWidth="286.0" layoutX="1.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/login.jpeg" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="tf_Id" layoutX="23.0" layoutY="204.0" prefHeight="39.0" prefWidth="229.0" promptText="iD" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="203.5" />
+                  <TextField fx:id="tf_passWord" layoutX="28.0" layoutY="253.0" prefHeight="39.0" prefWidth="229.0" promptText="passWord" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="251.5" />
+                  <AnchorPane fx:id="ap_login" layoutX="27.0" layoutY="350.0" prefHeight="46.0" prefWidth="233.0" style="-fx-background-radius: 28px;" stylesheets="@startCss.css">
+                     <children>
+                        <Label alignment="CENTER" layoutX="41.0" layoutY="4.0" prefHeight="45.0" prefWidth="140.0" text="login">
+                           <font>
+                              <Font name="Bauhaus 93" size="31.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <Label fx:id="lbl_wrongLogin" layoutX="27.0" layoutY="298.0" prefHeight="17.0" prefWidth="88.0" textFill="#b51f1f" visible="false" />
                </children>
             </AnchorPane>
          </children>
