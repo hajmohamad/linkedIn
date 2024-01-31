@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="650.0" prefWidth="319.0" style="-fx-background-color: none; -fx-background-radius: 20px;" stylesheets="@startCss.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.linkedin.StartFxmlController">
+<AnchorPane prefHeight="650.0" prefWidth="319.0" style="-fx-background-color: none; -fx-background-radius: 20px;" stylesheets="@startCss.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.linkedin.signUpFxmlController">
    <children>
       <ImageView fitHeight="650.0" fitWidth="319.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -21,7 +21,7 @@
                   <Image url="@image/icon/LinkedINlogo.png" />
                </image>
             </ImageView>
-            <AnchorPane fx:id="ap_login" layoutX="33.0" layoutY="331.0" prefHeight="52.0" prefWidth="222.0" style="-fx-background-radius: 28px;" stylesheets="@startCss.css">
+            <AnchorPane fx:id="ap_login" layoutX="33.0" layoutY="331.0" prefHeight="52.0" prefWidth="222.0" style="-fx-background-color: #3a92e4; -fx-background-radius: 28px;" stylesheets="@startCss.css">
                <children>
                   <Label alignment="CENTER" layoutX="41.0" layoutY="4.0" prefHeight="45.0" prefWidth="140.0" text="login">
                      <font>
@@ -30,7 +30,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="ap_signup" layoutX="33.0" layoutY="401.0" prefHeight="52.0" prefWidth="222.0" style="-fx-background-radius: 28px;" stylesheets="@startCss.css">
+            <AnchorPane fx:id="ap_signup" layoutX="33.0" layoutY="401.0" prefHeight="52.0" prefWidth="222.0" style="-fx-background-color: #3a92e4; -fx-background-radius: 28px;" stylesheets="@startCss.css">
                <children>
                   <Label alignment="CENTER" layoutX="41.0" layoutY="4.0" prefHeight="45.0" prefWidth="140.0" text="signup" AnchorPane.bottomAnchor="3.0">
                      <font>

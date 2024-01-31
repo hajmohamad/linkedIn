@@ -1,0 +1,18 @@
+#ap_login{
+    -fx-background-color:  #3a92e4;
+}
+#ap_login:hover{
+    -fx-background-color: #1e4a6d;
+}
+#ap_login:pressed{
+    -fx-background-color: #381219;
+}
+#ap_signup{
+    -fx-background-color:  #3a92e4;
+}
+#ap_signup:hover{
+    -fx-background-color: #1e4a6d;
+}
+#ap_signup:pressed{
+    -fx-background-color: #4f1e30;
+}

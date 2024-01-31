@@ -1,6 +1,7 @@
 package Model.graph;
 
-import com.example.linkedin.HelloApplication;
+
+import com.example.linkedin.StartFxmlController;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -23,7 +24,7 @@ public class User extends ImageView {
 
 
     public User(String ID,String password, String name, String birthday, String lastname, String birthLocation, String field, String workplace) {
-        super.setImage(new Image(HelloApplication.class.getResource("/image/icon/user.png").toString()));
+        super.setImage(new Image(StartFxmlController.class.getResource("/image/icon/user.png").toString()));
         this.ID = ID;
         this.password = password;
         this.name = name;
@@ -110,7 +111,7 @@ public class User extends ImageView {
         this.password = password;
     }
     public void setProfilePicture(String path){
-        this.setImage(new Image(HelloApplication.class.getResource(path).toString()));
+        this.setImage(new Image(StartFxmlController.class.getResource(path).toString()));
     }
 
 
