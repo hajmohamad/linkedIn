@@ -3,9 +3,17 @@ package Controller;
 import Model.graph.User;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class UserController {
-
+    public static UserController userController;
+    public UserController(){};
+    public static UserController getInstance(){
+        if (userController == null){
+            userController = new UserController();
+        }
+        return userController;
+    }
     public static User mainUser;
     public void setMainUser(User user){
         mainUser = user;
@@ -34,10 +42,29 @@ public class UserController {
     public void removeSpecialty(String newSpecialty){
         mainUser.removeSpecialties(newSpecialty);
     }
-    public ArrayList<String> getSpecialties(){
+    public List<String> getSpecialties(){
         return mainUser.getSpecialties();
     }
-
-
+    public String getName(){
+        return mainUser.getName();
+    }
+    public String getLastname(){
+        return mainUser.getLastname();
+    }
+    public String getBirthday(){
+        return mainUser.getBirthday();
+    }
+    public String getBirthLocation(){
+        return mainUser.getBirthLocation();
+    }
+    public String getField(){
+        return mainUser.getField();
+    }
+    public String getWorkplace(){
+        return mainUser.getWorkplace();
+    }
+    public User getMainUser(){
+        return mainUser;
+    }
 
 }
