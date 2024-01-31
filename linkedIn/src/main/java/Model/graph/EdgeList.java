@@ -55,8 +55,11 @@ public class EdgeList implements Graph{
     }
 
     @Override
-    public Object[] endVertices(Object e) {
-        Vertex [] result = ((Edge) e).getEndpoints();
+    public List<Vertex> endVertices(Object e) {
+        List <Vertex> result = new ArrayList<>() ;
+        for(Vertex v:((Edge) e).getEndpoints()){
+            result.add(v);
+        }
         return result;
     }
 

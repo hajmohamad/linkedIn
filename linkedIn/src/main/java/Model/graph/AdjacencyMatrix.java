@@ -67,14 +67,14 @@ public class AdjacencyMatrix implements Graph {
     }
 
     @Override
-    public Vertex[] endVertices(Object e) {
-        Vertex[] result = new Vertex[2] ;
+    public List<Vertex> endVertices(Object e) {
+        List<Vertex> vertices = new ArrayList<Vertex>();
         boolean found = false ;
         for (int i = 0; i < numVertex ; i++) {
             for (int j = 0; j < numVertex; j++) {
                 if (matrix[i][j].equals(e)) {
-                    result[0] = vertices.get(i);
-                    result[1] = vertices.get(j);
+                    vertices.add(vertices.get(i));
+                    vertices.add(vertices.get(j));
                     found = true;
                     break;
                 }
@@ -84,7 +84,7 @@ public class AdjacencyMatrix implements Graph {
             }
         }
         if (found) {
-            return result;
+            return vertices;
         } else {
             return null ;
         }
