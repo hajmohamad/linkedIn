@@ -1,7 +1,6 @@
 package com.example.linkedin;
 
 import Controller.AdminController;
-import Controller.PriorityCalculation;
 import Controller.UserController;
 import Model.graph.User;
 import javafx.fxml.FXML;
@@ -14,10 +13,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
- public class suggestionFxmlController implements Initializable {
+ public class SuggestionFxmlController implements Initializable {
      @FXML
      private AnchorPane ic_explor;
 
@@ -40,20 +38,20 @@ import java.util.ResourceBundle;
      private HBox vbox_menuBar;
      public void menuBar(){
          ic_home.setOnMouseClicked(event -> {
-             pagesController.mainPage();
+             PagesController.goMainPage();
          });
          ic_personal.setOnMouseClicked(event -> {
-             pagesController.editeProfile();
+             PagesController.goEditeProfilePage();
          });
          ic_explor.setOnMouseClicked(event -> {
-             pagesController.explorePage();
+             PagesController.goExplorePage();
          });
 
          ic_plus.setOnMouseClicked(event -> {
-             pagesController.addPost();
+             PagesController.goAddPostPage();
          });
          ic_heart.setOnMouseClicked(event -> {
-             pagesController.suggestionPage();
+             PagesController.goSuggestionPage();
          });
      }
 
@@ -65,7 +63,7 @@ import java.util.ResourceBundle;
         ap.setStyle("-fx-border-color: #8d8888; -fx-border-radius: 20px; -fx-border-width: 2px;");
 
         VBox.setMargin(ap, new javafx.geometry.Insets(5.0, 15, 5.0, 5.0));
-        ImageView userImage = new ImageView(new Image(linkedIn.class.getResource("image/icon/user.png").toString()  ));
+        ImageView userImage = new ImageView(new Image(LinkedIn.class.getResource("image/icon/user.png").toString()  ));
         userImage.setFitHeight(48.0);
         userImage.setFitWidth(48.0);
         userImage.setLayoutX(14.0);
@@ -92,7 +90,7 @@ import java.util.ResourceBundle;
 
         }
 
-        ImageView addImage =  new ImageView(new Image(linkedIn.class.getResource("image/icon/bAdd.png").toString()));
+        ImageView addImage =  new ImageView(new Image(LinkedIn.class.getResource("image/icon/bAdd.png").toString()));
         addImage.setFitHeight(40.0);
         addImage.setFitWidth(30.0);
         addImage.setLayoutX(223.0);
@@ -102,7 +100,7 @@ import java.util.ResourceBundle;
         AnchorPane.setLeftAnchor(addImage, 223.0);
         AnchorPane.setTopAnchor(addImage, 20.0);
         addImage.setOnMouseClicked(event -> {
-            addImage.setImage(new Image(linkedIn.class.getResource("image/icon/afAdd.png").toString()));
+            addImage.setImage(new Image(LinkedIn.class.getResource("image/icon/afAdd.png").toString()));
             AdminController.getInstance().addConnection(UserController.getInstance().getMainUser(),user);
         });
 

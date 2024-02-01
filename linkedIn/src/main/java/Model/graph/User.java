@@ -1,13 +1,10 @@
 package Model.graph;
 
 
-import com.example.linkedin.StartFxmlController;
-import com.example.linkedin.linkedIn;
+import com.example.linkedin.LinkedIn;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class User {
@@ -133,7 +130,7 @@ public class User {
 
 
     public Image getImage() {
-       return new Image(linkedIn.class.getResource(imagePath).toString());
+       return new Image(LinkedIn.class.getResource(imagePath).toString());
     }
 
     public void setImagePath(String imagePath) {

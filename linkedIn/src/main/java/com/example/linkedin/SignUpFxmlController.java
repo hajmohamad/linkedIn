@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class signUpFxmlController implements Initializable {
+public class SignUpFxmlController implements Initializable {
 
     @FXML
     private AnchorPane ap_signup;
@@ -42,14 +42,14 @@ public class signUpFxmlController implements Initializable {
 
 
     public void mainPageAfterLogin() {
-        FXMLLoader fxmlLoader = new FXMLLoader(linkedIn.class.getResource("editeProfileFxml.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(LinkedIn.class.getResource("editeProfileFxml.fxml"));
         Scene scene = null;
         try {
             scene = new Scene(fxmlLoader.load(), 319, 650);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        linkedIn.mainStage.setScene(scene);
+        LinkedIn.mainStage.setScene(scene);
         scene.setFill(Color.TRANSPARENT);
 
     }

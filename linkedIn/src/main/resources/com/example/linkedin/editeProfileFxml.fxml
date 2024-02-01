@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="650.0" prefWidth="319.0" style="-fx-background-color: none; -fx-background-radius: 20px;" stylesheets="@startCss.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.linkedin.editProfileFxmlController">
+<AnchorPane prefHeight="650.0" prefWidth="319.0" style="-fx-background-color: none; -fx-background-radius: 20px;" stylesheets="@startCss.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.linkedin.EditProfileFxmlController">
    <children>
       <ImageView fitHeight="650.0" fitWidth="319.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
          <image>

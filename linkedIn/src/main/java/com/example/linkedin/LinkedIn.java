@@ -1,7 +1,6 @@
 package com.example.linkedin;
 
 import Controller.AdminController;
-import Controller.PriorityCalculation;
 import Model.graph.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -13,44 +12,32 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-
 import org.json.simple.JSONObject;
 import org.json.simple.JSONArray;
-import org.json.simple.parser.ParseException;
 import org.json.simple.parser.JSONParser;
-public class linkedIn extends Application {
+public class LinkedIn extends Application {
     static Stage mainStage;
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(linkedIn.class.getResource("StartFxml.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(LinkedIn.class.getResource("StartFxml.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 319, 650);
         stage.setScene(scene);
-        pagesController.baseStage = stage;
+        PagesController.baseStage = stage;
         stage.initStyle(StageStyle.TRANSPARENT);
         scene.setFill(Color.TRANSPARENT);
         stage.show();
         mainStage = stage;
     }
-
     public static void main(String[] args) {
-
-        AdminController adminController = AdminController.getInstance() ;
         String s = "E:\\users.json" ;
-
         for (User user : readJsonFile(s)) {
             adminController.addUser(user) ;
         }
-        User user = new User("12" , "ehsan" , "ehsan" , "1383/04/12" , "farmad"
-                , "student" , "here") ;
-        adminController.addUser(user) ;
-        List<User> l = PriorityCalculation.suggestions(user , 40);
-        System.out.println("list size : " + l.size());
-
+        launch();
     }
 
-
+    private static final AdminController adminController = AdminController.getInstance() ;
     private static List<User> readJsonFile(String filePath) {
         List<User> persons = new ArrayList<>();
         JSONParser parser = new JSONParser();

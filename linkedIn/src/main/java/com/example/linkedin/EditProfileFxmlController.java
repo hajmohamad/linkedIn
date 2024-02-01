@@ -3,14 +3,12 @@ package com.example.linkedin;
 import Controller.UserController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
@@ -18,7 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-public class editProfileFxmlController implements Initializable {
+public class EditProfileFxmlController implements Initializable {
 
 
     @FXML
@@ -76,20 +74,20 @@ public class editProfileFxmlController implements Initializable {
     private HBox vbox_menuBar;
     public void menuBar(){
         ic_home.setOnMouseClicked(event -> {
-            pagesController.mainPage();
+            PagesController.goMainPage();
         });
         ic_personal.setOnMouseClicked(event -> {
-            pagesController.editeProfile();
+            PagesController.goEditeProfilePage();
         });
         ic_explor.setOnMouseClicked(event -> {
-            pagesController.explorePage();
+            PagesController.goExplorePage();
         });
 
         ic_plus.setOnMouseClicked(event -> {
-            pagesController.addPost();
+            PagesController.goAddPostPage();
         });
         ic_heart.setOnMouseClicked(event -> {
-            pagesController.suggestionPage();
+            PagesController.goSuggestionPage();
         });
     }
 
@@ -105,7 +103,7 @@ public void editPersonal(){
         userController.editBirthLocation(tf_birthLocation.getText());
         userController.editWorkplace(tf_workPlace.getText());
         editeSpecialties();
-        pagesController.editeProfile();
+        PagesController.goEditeProfilePage();
     });
 }
 public void editeSpecialties(){

@@ -9,7 +9,7 @@ import javafx.scene.layout.AnchorPane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class loginFxmlController  implements Initializable {
+public class LoginFxmlController implements Initializable {
 
     @FXML
     private AnchorPane ap_login;
@@ -26,8 +26,14 @@ public class loginFxmlController  implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //if login id or password is wrong show error message
-        // lbl_wrongLogin should be visible and write massage inside
+        ap_login.setOnMouseClicked(event -> {
 
+        });
     }
+
+    private boolean checkLogin () {
+        tf_Id.getText() ;
+        tf_passWord.getText() ;
+    }
+
 }

@@ -8,7 +8,7 @@ import javafx.scene.layout.HBox;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class mainFxmlController  implements Initializable {
+public class MainFxmlController implements Initializable {
     @FXML
     private AnchorPane ic_explor;
 
@@ -29,20 +29,20 @@ public class mainFxmlController  implements Initializable {
 
 public void menuBar(){
     ic_home.setOnMouseClicked(event -> {
-        pagesController.mainPage();
+        PagesController.goMainPage();
     });
     ic_personal.setOnMouseClicked(event -> {
-        pagesController.editeProfile();
+        PagesController.goEditeProfilePage();
     });
     ic_explor.setOnMouseClicked(event -> {
-        pagesController.explorePage();
+        PagesController.goExplorePage();
     });
 
     ic_plus.setOnMouseClicked(event -> {
-        pagesController.addPost();
+        PagesController.goAddPostPage();
     });
     ic_heart.setOnMouseClicked(event -> {
-        pagesController.suggestionPage();
+        PagesController.goSuggestionPage();
     });
     }
     @Override
