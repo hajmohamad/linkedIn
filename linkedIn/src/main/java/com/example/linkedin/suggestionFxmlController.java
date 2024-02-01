@@ -18,15 +18,47 @@ import java.util.List;
 import java.util.ResourceBundle;
 
  public class suggestionFxmlController implements Initializable {
-    @FXML
-    private AnchorPane ic_plus;
+     @FXML
+     private AnchorPane ic_explor;
 
-    @FXML
-    private VBox vbox_Suggestion;
+     @FXML
+     private AnchorPane ic_heart;
 
-    @FXML
-    private HBox vbox_menuBar;
-    public AnchorPane CustomAnchorPane(User user) {
+     @FXML
+     private AnchorPane ic_home;
+
+     @FXML
+     private AnchorPane ic_personal;
+
+     @FXML
+     private AnchorPane ic_plus;
+
+     @FXML
+     private VBox vbox_Suggestion;
+
+     @FXML
+     private HBox vbox_menuBar;
+     public void menuBar(){
+         ic_home.setOnMouseClicked(event -> {
+             pagesController.mainPage();
+         });
+         ic_personal.setOnMouseClicked(event -> {
+             pagesController.editeProfile();
+         });
+         ic_explor.setOnMouseClicked(event -> {
+             pagesController.explorePage();
+         });
+
+         ic_plus.setOnMouseClicked(event -> {
+             pagesController.addPost();
+         });
+         ic_heart.setOnMouseClicked(event -> {
+             pagesController.suggestionPage();
+         });
+     }
+
+     public AnchorPane CustomAnchorPane(User user) {
+        menuBar();
         AnchorPane ap=new AnchorPane();
         ap.setMinHeight(74.0);
         ap.setMinWidth(265.0);

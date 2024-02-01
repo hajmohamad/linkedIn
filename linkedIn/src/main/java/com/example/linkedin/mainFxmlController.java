@@ -27,10 +27,27 @@ public class mainFxmlController  implements Initializable {
     @FXML
     private HBox vbox_menuBar;
 
+public void menuBar(){
+    ic_home.setOnMouseClicked(event -> {
+        pagesController.mainPage();
+    });
+    ic_personal.setOnMouseClicked(event -> {
+        pagesController.editeProfile();
+    });
+    ic_explor.setOnMouseClicked(event -> {
+        pagesController.explorePage();
+    });
 
+    ic_plus.setOnMouseClicked(event -> {
+        pagesController.addPost();
+    });
+    ic_heart.setOnMouseClicked(event -> {
+        pagesController.suggestionPage();
+    });
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+menuBar();
 
     }
 }
