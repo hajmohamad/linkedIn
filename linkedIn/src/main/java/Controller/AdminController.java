@@ -23,6 +23,8 @@ public class AdminController {
     public User addUser(String ID,String password, String name, String birthday, String lastname, String birthLocation, String field, String workplace){
         User user=new User(ID,password,name, birthday,lastname, birthLocation, field, workplace);
         Graph.insertVertex(user);
+        UserController.getInstance();
+        UserController.getInstance().setMainUser(user);
         return user;
     }
     public void RemoveUser(User user){
