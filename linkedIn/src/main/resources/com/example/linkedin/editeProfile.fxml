@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="650.0" prefWidth="319.0" style="-fx-background-color: none; -fx-background-radius: 20px;" stylesheets="@startCss.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.linkedin.editProfileFxmlController">
+   <children>
+      <ImageView fitHeight="650.0" fitWidth="319.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/phone.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="11.0" layoutY="51.0" prefHeight="545.0" prefWidth="287.0" style="-fx-background-color: #ffffff; -fx-background-radius: 30px;" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0" />
+            <AnchorPane layoutX="-3.0" layoutY="1.0" prefHeight="52.0" prefWidth="287.0" style="-fx-background-color: f5f5f5; -fx-background-radius: 30px 30px 0 0;" AnchorPane.leftAnchor="0.0">
+               <children>
+                  <ImageView fitHeight="52.0" fitWidth="92.0" layoutX="3.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="8.0">
+                     <image>
+                        <Image url="@image/icon/LinkedINlogo.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="461.0" prefWidth="287.0" vvalue="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="52.0">
+               <content>
+                  <VBox prefHeight="459.0" prefWidth="269.0" spacing="8.0">
+                     <children>
+                        <HBox prefHeight="76.0" prefWidth="283.0">
+                           <children>
+                              <AnchorPane prefHeight="62.0" prefWidth="65.0" style="-fx-background-radius: 55px;">
+                                 <children>
+                                    <ImageView fx:id="ImageView_profile" fitHeight="68.0" fitWidth="66.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="1.0">
+                                       <image>
+                                          <Image url="@image/icon/user.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets bottom="7.0" left="15.0" top="8.0" />
+                                 </HBox.margin>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="69.0" prefWidth="200.0">
+                                 <children>
+                                    <Label prefHeight="29.0" prefWidth="156.0" text="Label">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fx:id="icon_picture" fitHeight="21.0" fitWidth="30.0" layoutX="1.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@image/icon/camera.png" />
+                                       </image>
+                                    </ImageView>
+                                    <TextField fx:id="tf_photoPath" layoutX="26.0" layoutY="50.0" prefHeight="18.0" prefWidth="171.0" promptText="filePath" visible="false" />
+                                    <Label layoutX="103.0" layoutY="4.0" prefHeight="21.0" prefWidth="80.0" text="connection">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="lbl_connectionNumber" alignment="CENTER" layoutX="105.0" layoutY="21.0" prefHeight="34.0" prefWidth="76.0" text="numer" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets bottom="6.0" />
+                                 </HBox.margin>
+                                 <opaqueInsets>
+                                    <Insets right="8.0" />
+                                 </opaqueInsets>
+                              </AnchorPane>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <VBox.margin>
+                              <Insets right="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <VBox fillWidth="false" prefHeight="237.0" prefWidth="174.0" spacing="3.0" style="-fx-background-radius: 20px; -fx-border-width: 4px; -fx-border-color: #6d756f; -fx-border-radius: 20px;">
+                           <children>
+                              <Label text="personal Information" underline="true" wrapText="true">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font></Label>
+                              <VBox prefHeight="48.0" prefWidth="221.0">
+                                 <children>
+                                    <Label prefHeight="21.0" prefWidth="86.0" text="PassWord" textFill="#575353">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <PasswordField fx:id="tf_password" />
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="35.0" layoutY="19.0" prefHeight="48.0" prefWidth="221.0">
+                                 <children>
+                                    <Label prefHeight="21.0" prefWidth="106.0" text="BirthLocation" textFill="#575353">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="tf_birthLocation" prefHeight="25.0" prefWidth="174.0" />
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="35.0" layoutY="70.0" prefHeight="48.0" prefWidth="221.0">
+                                 <children>
+                                    <Label prefHeight="21.0" prefWidth="80.0" text="Workplace" textFill="#575353">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="tf_workPlace" prefHeight="25.0" prefWidth="174.0" />
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="35.0" layoutY="121.0" prefHeight="48.0" prefWidth="221.0">
+                                 <children>
+                                    <Label prefHeight="21.0" prefWidth="111.0" text="field of study" textFill="#575353">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="tf_fieldOfStudy" prefHeight="25.0" prefWidth="174.0" />
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="20.0" top="4.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets left="5.0" right="20.0" />
+                           </VBox.margin>
+                        </VBox>
+                        <VBox fx:id="vboc_specialties" alignment="TOP_CENTER" fillWidth="false" prefHeight="237.0" prefWidth="174.0" spacing="3.0" style="-fx-background-radius: 20px; -fx-border-width: 4px; -fx-border-color: #6d756f; -fx-border-radius: 20px;">
+                           <children>
+                              <AnchorPane prefHeight="32.0" prefWidth="231.0">
+                                 <children>
+                                    <Label text="specialties" underline="true" wrapText="true">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fx:id="icon_specialties" fitHeight="19.0" fitWidth="23.0" layoutX="198.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@image/icon/plus.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="20.0" top="4.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets left="5.0" right="20.0" />
+                           </VBox.margin>
+                        </VBox>
+                        <AnchorPane fx:id="ap_signup" prefHeight="52.0" prefWidth="222.0" style="-fx-background-radius: 28px;" stylesheets="@startCss.css">
+                           <children>
+                              <Label alignment="CENTER" layoutX="72.0" layoutY="2.0" prefHeight="45.0" prefWidth="140.0" text="edite" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="72.0">
+                                 <font>
+                                    <Font name="Bauhaus 93" size="31.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="5.0" right="12.0" />
+                           </VBox.margin>
+                        </AnchorPane>
+                     </children>
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
+                  </VBox>
+               </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
