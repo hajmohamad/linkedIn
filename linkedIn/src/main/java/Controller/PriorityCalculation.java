@@ -11,7 +11,7 @@ public abstract class PriorityCalculation {
     private static String field ;
     private static String workPlace ;
     private static List<String> specialties ;
-    private static List<Priority> myPriority = new ArrayList<>();
+    private final static List<Priority> myPriority = new ArrayList<>();
     public static List<User> suggestions (User inputUser , int order) {
         if (inputUser != null) {
             myPriority.add(Priority.name);
@@ -32,10 +32,12 @@ public abstract class PriorityCalculation {
                 scoreUser.addScore(connectionScore(user));
                 bord.add(scoreUser);
             }
-//        bord.stream().sorted();
 
 
-        List<ScoreUser> friends = goConnection(inputUser , 5) ;
+//            نیاز به بررسی کامل
+//            برررسی کامل در توابع امتیازی
+//            -------------------------------------------------------------------
+            List<ScoreUser> friends = goConnection(inputUser, 5);
 
 
             List<User> result = new ArrayList<>();
@@ -44,14 +46,13 @@ public abstract class PriorityCalculation {
                 order = bord.size();
             }
             for (int i = 0; i < order; i++) {
+                result.add(friends.get(i).getUser());
                 result.add(bord.get(i).getUser());
-                System.out.println(bord.get(i).getScore());
             }
-
-
+//            -----------------------------------------------------------------------
             return result;
         } else {
-            return null ;
+            return null;
         }
     }
     private static ScoreUser nameScore(User target) {
