@@ -51,7 +51,7 @@
                               </AnchorPane>
                               <AnchorPane prefHeight="69.0" prefWidth="200.0">
                                  <children>
-                                    <Label prefHeight="29.0" prefWidth="156.0" text="Label">
+                                    <Label fx:id="lbl_name" layoutX="11.0" prefHeight="29.0" prefWidth="146.0" text="Label">
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
@@ -141,7 +141,7 @@
                               <Insets left="5.0" right="20.0" />
                            </VBox.margin>
                         </VBox>
-                        <VBox fx:id="vbox_specialties" alignment="TOP_CENTER" fillWidth="false" prefHeight="237.0" prefWidth="174.0" spacing="3.0" style="-fx-background-radius: 20px; -fx-border-width: 4px; -fx-border-color: #6d756f; -fx-border-radius: 20px;">
+                        <VBox fx:id="vbox_specialties" alignment="CENTER" fillWidth="false" prefHeight="237.0" prefWidth="174.0" spacing="3.0" style="-fx-background-radius: 20px; -fx-border-width: 4px; -fx-border-color: #6d756f; -fx-border-radius: 20px;">
                            <children>
                               <AnchorPane prefHeight="32.0" prefWidth="231.0">
                                  <children>
@@ -165,7 +165,7 @@
                               <Insets left="5.0" right="20.0" />
                            </VBox.margin>
                         </VBox>
-                        <AnchorPane fx:id="ap_signup" prefHeight="52.0" prefWidth="222.0" style="-fx-background-radius: 28px;" stylesheets="@startCss.css">
+                        <AnchorPane fx:id="ap_edit" prefHeight="52.0" prefWidth="212.0" style="-fx-background-radius: 28px;" stylesheets="@startCss.css">
                            <children>
                               <Label alignment="CENTER" layoutX="72.0" layoutY="2.0" prefHeight="45.0" prefWidth="140.0" text="edite" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="72.0">
                                  <font>
@@ -174,7 +174,7 @@
                               </Label>
                            </children>
                            <VBox.margin>
-                              <Insets left="5.0" right="12.0" />
+                              <Insets left="5.0" right="20.0" />
                            </VBox.margin>
                         </AnchorPane>
                      </children>
@@ -184,7 +184,7 @@
                   </VBox>
                </content>
             </ScrollPane>
-            <HBox fx:id="vbox_menuBar" layoutY="495.0" prefHeight="50.0" prefWidth="290.0" stylesheets="@menuBar.css">
+            <HBox fx:id="vbox_menuBar" layoutY="495.0" prefHeight="50.0" prefWidth="288.0" stylesheets="@menuBar.css">
                <children>
                   <AnchorPane fx:id="ic_home" prefHeight="23.0" prefWidth="32.0">
                      <children>

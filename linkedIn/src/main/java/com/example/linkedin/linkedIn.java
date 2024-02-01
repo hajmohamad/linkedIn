@@ -35,6 +35,7 @@ public class linkedIn extends Application {
     }
 
     public static void main(String[] args) {
+
         AdminController adminController = AdminController.getInstance() ;
         String s = "E:\\users.json" ;
 
@@ -46,6 +47,7 @@ public class linkedIn extends Application {
         adminController.addUser(user) ;
         List<User> l = PriorityCalculation.suggestions(user , 40);
         System.out.println("list size : " + l.size());
+
     }
 
 
