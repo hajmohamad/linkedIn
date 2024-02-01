@@ -16,7 +16,7 @@ public class StartFxmlController implements Initializable {
     private AnchorPane ap_login;
     @FXML
     private AnchorPane ap_signup;
-<<<<<<< HEAD
+
     public void goToLogin(){
         FXMLLoader fxmlLoader = new FXMLLoader(linkedIn.class.getResource("loginPageFxml.fxml"));
         Scene scene = null;
@@ -40,19 +40,11 @@ public class StartFxmlController implements Initializable {
         scene.setFill(Color.TRANSPARENT);
 
     }
-=======
-
->>>>>>> 2163ed1da86096aea904f390219176dd9559f351
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ap_login.setOnMouseClicked(event -> {
-<<<<<<< HEAD
+
             goToLogin();
-=======
-
-
->>>>>>> 2163ed1da86096aea904f390219176dd9559f351
         });
         ap_signup.setOnMouseClicked(event -> {
 

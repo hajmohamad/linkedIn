@@ -6,7 +6,6 @@ import java.util.*;
 
 public abstract class PriorityCalculation {
     private static String name ;
-    private static String lastName ;
     private static String  birthDay ;
     private static String birthLocation ;
     private static String field ;
@@ -15,7 +14,6 @@ public abstract class PriorityCalculation {
     private static List<Priority> myPriority ;
     public static List<User> suggestions (User inputUser , int order) {
         name= inputUser.getName() ;
-        lastName= inputUser.getLastname() ;
         birthDay= inputUser.getBirthday();
         birthLocation= inputUser.getBirthLocation();
         field= inputUser.getField() ;
@@ -25,7 +23,6 @@ public abstract class PriorityCalculation {
 
         for (User user : admin.getAllUser()) {
             ScoreUser scoreUser = nameScore(user) ;  // شروع محاسبه ضریب اولیت هر فرد
-            scoreUser.addScore(lastNameScore(user));
             scoreUser.addScore(birthDayScore(user));
             scoreUser.addScore(cityScore(user));
             scoreUser.addScore(studyFieldScore(user));
@@ -62,14 +59,6 @@ public abstract class PriorityCalculation {
         }
         ScoreUser scoreUser = new ScoreUser(target , score) ;
         return scoreUser;
-    }
-    private static double lastNameScore(User target) {
-        int n = myPriority.indexOf(Priority.lastName); // ضریب اولویت
-        int score = 0 ; // نمره دریافتی
-        if (target.getLastname().equals(lastName)) {
-            score += (10^n) ;
-        }
-        return score;
     }
     private static double birthDayScore(User target) {
         int n = myPriority.indexOf(Priority.birthDay); // ضریب اولویت

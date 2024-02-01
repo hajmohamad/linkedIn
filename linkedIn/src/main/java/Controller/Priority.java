@@ -1,3 +1,3 @@
 package Controller;
 
-enum Priority {name, lastName, birthDay, birthLocation, field, workPlace, specialties, connection}
+enum Priority {name, birthDay, birthLocation, field, workPlace, specialties, connection}

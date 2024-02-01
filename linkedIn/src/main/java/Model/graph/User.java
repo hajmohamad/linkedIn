@@ -15,7 +15,6 @@ public class User extends ImageView {
     private  String name;
     private  String password;
     private  String birthday;
-    private String lastname;
     private String BirthLocation;
     private String field;
     private String Workplace;
@@ -23,13 +22,12 @@ public class User extends ImageView {
 
 
 
-    public User(String ID,String password, String name, String birthday, String lastname, String birthLocation, String field, String workplace) {
+    public User(String ID,String password, String name, String birthday, String birthLocation, String field, String workplace) {
         super.setImage(new Image(StartFxmlController.class.getResource("/image/icon/user.png").toString()));
         this.ID = ID;
         this.password = password;
         this.name = name;
         this.birthday = birthday;
-        this.lastname = lastname;
         BirthLocation = birthLocation;
         this.field = field;
         Workplace = workplace;
@@ -55,17 +53,8 @@ public class User extends ImageView {
     public String getBirthday() {
         return birthday;
     }
-
     public void setBirthday(String birthday) {
         this.birthday = birthday;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
     }
 
     public String getBirthLocation() {

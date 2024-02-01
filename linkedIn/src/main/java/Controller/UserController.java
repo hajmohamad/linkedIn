@@ -21,9 +21,6 @@ public class UserController {
     public void editName(String newName){
         mainUser.setName(newName);
     }
-    public void editLastname(String newLastname){
-        mainUser.setLastname(newLastname);
-    }
     public void editBirthday(String newBirthday){
         mainUser.setBirthday(newBirthday);
     }
@@ -47,9 +44,6 @@ public class UserController {
     }
     public String getName(){
         return mainUser.getName();
-    }
-    public String getLastname(){
-        return mainUser.getLastname();
     }
     public String getBirthday(){
         return mainUser.getBirthday();
