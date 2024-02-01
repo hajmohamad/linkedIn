@@ -33,7 +33,7 @@ import java.util.ResourceBundle;
         ap.setStyle("-fx-border-color: #8d8888; -fx-border-radius: 20px; -fx-border-width: 2px;");
 
         VBox.setMargin(ap, new javafx.geometry.Insets(5.0, 15, 5.0, 5.0));
-        ImageView userImage = new ImageView(user.getImage());
+        ImageView userImage = new ImageView(new Image(linkedIn.class.getResource("image/icon/user.png").toString()  ));
         userImage.setFitHeight(48.0);
         userImage.setFitWidth(48.0);
         userImage.setLayoutX(14.0);
@@ -77,7 +77,8 @@ import java.util.ResourceBundle;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        List<User> suggestion = PriorityCalculation.suggestions(userController.getMainUser() , 4) ;
+        vbox_Suggestion.getChildren().add(CustomAnchorPane(new User("1", "1", "1", "1", "1", "1", "1")));
+//        List<User> suggestion = PriorityCalculation.suggestions(userController.getMainUser() , 4) ;
     }
     UserController userController = UserController.getInstance() ;
 }

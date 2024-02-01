@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class User extends ImageView {
+public class User {
     // add  private variable
     private  String ID;
     private  String name;
@@ -19,6 +19,7 @@ public class User extends ImageView {
     private String BirthLocation;
     private String field;
     private String Workplace;
+    private String imagePath;
     private List<String> specialties;
     private List<String> connectionsId;
 
@@ -50,8 +51,7 @@ public class User extends ImageView {
     }
 
     public User(String ID, String password, String name, String birthday, String birthLocation, String field, String workplace) {
-        System.out.println(linkedIn.class.getResource("image/icon/bAdd.png").toString());
-        super.setImage(new Image(StartFxmlController.class.getResource("image/icon/bAdd.png").toString()));
+        imagePath = "image/icon/user.png";
         this.ID = ID;
         this.password = password;
         this.name = name;
@@ -127,10 +127,14 @@ public class User extends ImageView {
     public void setPassword(String password) {
         this.password = password;
     }
-    public void setProfilePicture(String path){
-        this.setImage(new Image(StartFxmlController.class.getResource(path).toString()));
+
+
+
+    public ImageView getImage() {
+        return new ImageView(new Image(imagePath));
     }
 
-
-
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
 }

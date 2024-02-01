@@ -31,7 +31,7 @@ public class linkedIn extends Application {
     }
 
     public static void main(String[] args) {
-
+//launch(args);
         for(User user:readJsonFile("I:\\ramezon\\data structures\\social-network-hajehsan\\linkedIn\\src\\main\\resources\\com\\example\\linkedin\\users.json")){
             System.out.println(user);
         }
