@@ -66,7 +66,7 @@ public class pagesController {
         scene.setFill(Color.TRANSPARENT);
     }
     public static void suggestionPage(){
-        FXMLLoader fxmlLoader = new FXMLLoader(linkedIn.class.getResource("suggestionsFxml.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(linkedIn.class.getResource("suggestionFxml.fxml"));
         Scene scene = null;
         try {
             scene = new Scene(fxmlLoader.load(), 319, 650);

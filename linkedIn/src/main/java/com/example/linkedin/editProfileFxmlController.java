@@ -1,7 +1,6 @@
 package com.example.linkedin;
 
 import Controller.UserController;
-import Model.graph.User;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -71,9 +70,20 @@ public class editProfileFxmlController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-
-
-
+        tf_password.setText(userController.getPassword()) ;
+        tf_birthLocation.setText(userController.getBirthLocation()) ;
+        tf_fieldOfStudy.setText(userController.getField()) ;
+        tf_workPlace.setText(userController.getWorkplace()) ;
+        ap_signup.setOnMouseClicked(event -> {
+            userController.setPassword(tf_password.getText());
+            userController.editField(tf_fieldOfStudy.getText());
+            userController.editWorkplace(tf_workPlace.getText());
+        });
+        icon_specialties.setOnMouseClicked(event -> {
+            VBox vBox = new VBox() ;
+        });
     }
+    UserController userController = UserController.getInstance() ;
+
+
 }

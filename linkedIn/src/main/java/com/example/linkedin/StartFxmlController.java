@@ -21,7 +21,7 @@ public class StartFxmlController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ap_login.setOnMouseClicked(event -> {
-            pagesController.suggestionPage();
+
 
         });
         ap_signup.setOnMouseClicked(event -> {

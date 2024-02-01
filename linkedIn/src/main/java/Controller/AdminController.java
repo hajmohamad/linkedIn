@@ -20,8 +20,8 @@ public class AdminController {
         }
         return adminController;
     }
-    public User addUser(String ID,String password, String name, String birthday, String lastname, String birthLocation, String field, String workplace){
-        User user=new User(ID,password,name, birthday,lastname, birthLocation, field, workplace);
+    public User addUser(String ID,String password, String name, String birthday, String birthLocation, String field, String workplace){
+        User user=new User(ID,password,name, birthday, birthLocation, field, workplace);
         Graph.insertVertex(user);
         UserController.getInstance();
         UserController.getInstance().setMainUser(user);

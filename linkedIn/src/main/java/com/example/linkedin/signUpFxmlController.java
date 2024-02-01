@@ -19,16 +19,6 @@ public class signUpFxmlController implements Initializable {
 
     @FXML
     private AnchorPane ap_signup;
-
-    @FXML
-    private DatePicker datePicker_birthday;
-
-    @FXML
-    private TextField tf_birthLocation;
-
-    @FXML
-    private TextField tf_fieldOfStudy;
-
     @FXML
     private TextField tf_id;
 
@@ -39,7 +29,18 @@ public class signUpFxmlController implements Initializable {
     private TextField tf_password;
 
     @FXML
+    private DatePicker datePicker_birthday;
+
+    @FXML
+    private TextField tf_birthLocation;
+
+    @FXML
     private TextField tf_workPlace;
+    @FXML
+    private TextField tf_fieldOfStudy;
+
+
+
     public void mainPageAfterLogin() {
         FXMLLoader fxmlLoader = new FXMLLoader(linkedIn.class.getResource("editeProfileFxml.fxml"));
         Scene scene = null;
@@ -55,7 +56,6 @@ public class signUpFxmlController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ap_signup.setOnMouseClicked(event -> {
-
             mainPageAfterLogin();
         });
         tf_password.textProperty().addListener(new ChangeListener<String>() {
