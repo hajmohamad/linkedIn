@@ -26,7 +26,6 @@ public class StartFxmlController implements Initializable {
         }
         linkedIn.mainStage.setScene(scene);
         scene.setFill(Color.TRANSPARENT);
-
     }
     public void goToSignup(){
         FXMLLoader fxmlLoader = new FXMLLoader(linkedIn.class.getResource("signupFxml.fxml"));
@@ -45,7 +44,6 @@ public class StartFxmlController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ap_login.setOnMouseClicked(event -> {
             goToLogin();
-
         });
         ap_signup.setOnMouseClicked(event -> {
             goToSignup();

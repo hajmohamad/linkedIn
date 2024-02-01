@@ -4,26 +4,6 @@ import Model.graph.User;
 
 import java.util.*;
 
-enum Priority {name , lastName , birthDay , birthLocation, field, workPlace , specialties , connection}
-
-class ScoreUser {
-    private User user ;
-    private double score ;
-    public ScoreUser(User user , double score) {
-        this.user = user ;
-        this.score = score ;
-    }
-    public void addScore (double n) {
-        this.score += n ;
-    }
-    public User getUser() {
-        return user;
-    }
-    public double getScore() {
-        return score;
-    }
-}
-
 public class PriorityCalculation {
     String name ;
     String lastName ;
@@ -60,6 +40,9 @@ public class PriorityCalculation {
         for (int i = 0 ; i < order ; i++) {
             result.add(bord.get(i).getUser());
         }
+
+
+
         return result ;
     }
     public ScoreUser nameScore (User target) {
@@ -146,7 +129,18 @@ public class PriorityCalculation {
             return null ;
         }
     }
-    public double Similarity (String word , String name) {
-        return 0 ;
+    public double Similarity (String word1 , String word2) {
+        char[] a = word1.toCharArray();
+        char[] b = word2.toCharArray();
+        int n = 0;
+        for (char x : a) {
+            for (char y : b) {
+                if (x == y) {
+                    n++;
+                    break;
+                }
+            }
+        }
+        return n / ((a.length + b.length) / 2);
     }
 }
