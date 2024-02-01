@@ -7,6 +7,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
@@ -14,11 +15,27 @@ import java.util.ResourceBundle;
 
 public class editProfileFxmlController implements Initializable {
 
+
     @FXML
     private ImageView ImageView_profile;
 
     @FXML
-    private AnchorPane ap_edit;
+    private AnchorPane ap_signup;
+
+    @FXML
+    private AnchorPane ic_explor;
+
+    @FXML
+    private AnchorPane ic_heart;
+
+    @FXML
+    private AnchorPane ic_home;
+
+    @FXML
+    private AnchorPane ic_personal;
+
+    @FXML
+    private AnchorPane ic_plus;
 
     @FXML
     private ImageView icon_picture;
@@ -46,6 +63,9 @@ public class editProfileFxmlController implements Initializable {
 
     @FXML
     private VBox vboc_specialties;
+
+    @FXML
+    private HBox vbox_menuBar;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

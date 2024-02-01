@@ -31,9 +31,9 @@
                   </ImageView>
                </children>
             </AnchorPane>
-            <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="461.0" prefWidth="287.0" vvalue="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="52.0">
+            <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="443.0" prefWidth="287.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="52.0">
                <content>
-                  <VBox prefHeight="459.0" prefWidth="269.0" spacing="8.0">
+                  <VBox prefHeight="412.0" prefWidth="298.0" spacing="8.0">
                      <children>
                         <HBox prefHeight="76.0" prefWidth="283.0">
                            <children>
@@ -87,14 +87,6 @@
                               <Insets right="10.0" />
                            </VBox.margin>
                         </HBox>
-                        <ScrollPane minHeight="60.0" prefHeight="36.0" prefWidth="267.0" vbarPolicy="NEVER">
-                           <VBox.margin>
-                              <Insets left="3.0" right="18.0" />
-                           </VBox.margin>
-                           <content>
-                              <HBox prefHeight="57.0" prefWidth="200.0" />
-                           </content>
-                        </ScrollPane>
                         <VBox fillWidth="false" prefHeight="237.0" prefWidth="174.0" spacing="3.0" style="-fx-background-radius: 20px; -fx-border-width: 4px; -fx-border-color: #6d756f; -fx-border-radius: 20px;">
                            <children>
                               <Label text="personal Information" underline="true" wrapText="true">
@@ -182,7 +174,7 @@
                               </Label>
                            </children>
                            <VBox.margin>
-                              <Insets left="5.0" right="20.0" />
+                              <Insets left="5.0" right="12.0" />
                            </VBox.margin>
                         </AnchorPane>
                      </children>
@@ -192,6 +184,67 @@
                   </VBox>
                </content>
             </ScrollPane>
+            <HBox fx:id="vbox_menuBar" layoutY="495.0" prefHeight="50.0" prefWidth="290.0" stylesheets="@menuBar.css">
+               <children>
+                  <AnchorPane fx:id="ic_home" prefHeight="23.0" prefWidth="32.0">
+                     <children>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="3.0">
+                           <image>
+                              <Image url="@image/icon/home.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </AnchorPane>
+                  <AnchorPane fx:id="ic_explor" layoutX="26.0" layoutY="21.0" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="3.0">
+                           <image>
+                              <Image url="@image/icon/explore.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </AnchorPane>
+                  <AnchorPane fx:id="ic_plus" layoutX="308.0" layoutY="21.0" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="3.0">
+                           <image>
+                              <Image url="@image/icon/blackPlus.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="ic_heart" layoutX="363.0" layoutY="21.0" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="3.0">
+                           <image>
+                              <Image url="@image/icon/heart.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="ic_personal" layoutX="418.0" layoutY="21.0" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="3.0">
+                           <image>
+                              <Image url="@image/icon/user.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </children>
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
+            </HBox>
          </children>
       </AnchorPane>
    </children>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane prefHeight="650.0" prefWidth="319.0" style="-fx-background-color: none; -fx-background-radius: 20px;" stylesheets="@startCss.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.linkedin.mainFxmlController">
+   <children>
+      <ImageView fitHeight="650.0" fitWidth="319.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/phone.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="11.0" layoutY="51.0" prefHeight="545.0" prefWidth="287.0" style="-fx-background-color: #ffffff; -fx-background-radius: 30px;" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0">
+         <children>
+            <HBox fx:id="vbox_menuBar" layoutY="495.0" prefHeight="50.0" prefWidth="290.0" stylesheets="@menuBar.css">
+               <children>
+                  <AnchorPane fx:id="ic_home" prefHeight="23.0" prefWidth="32.0">
+                     <children>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="3.0">
+                           <image>
+                              <Image url="@image/icon/home.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </AnchorPane>
+                  <AnchorPane fx:id="ic_explor" layoutX="26.0" layoutY="21.0" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="3.0">
+                           <image>
+                              <Image url="@image/icon/explore.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </AnchorPane>
+                  <AnchorPane fx:id="ic_plus" layoutX="308.0" layoutY="21.0" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="3.0">
+                           <image>
+                              <Image url="@image/icon/blackPlus.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="ic_heart" layoutX="363.0" layoutY="21.0" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="3.0">
+                           <image>
+                              <Image url="@image/icon/heart.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="ic_personal" layoutX="418.0" layoutY="21.0" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="3.0">
+                           <image>
+                              <Image url="@image/icon/user.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </children>
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
+            </HBox>
+            <AnchorPane prefHeight="43.0" prefWidth="290.0" style="-fx-background-color: e3dede; -fx-background-radius: 30 30 0 0;">
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="82.0" layoutX="14.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/icon/LinkedINlogo.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

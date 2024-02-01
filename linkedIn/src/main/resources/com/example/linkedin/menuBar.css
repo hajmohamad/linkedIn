@@ -1,0 +1,45 @@
+#vbox_menuBar{
+    -fx-background-color: #e3dede;
+    -fx-background-radius: 0 0 30 30;
+    -fx-border-width: 1px;
+    -fx-border-radius: 0 0 30 30;
+    -fx-border-color: #948b8b;
+}
+#ic_home:hover{
+    -fx-min-width: 57;
+    -fx-border-radius: 0 0 30 30;
+    -fx-border-width: 0 2 2  2;
+    -fx-border-color: #757579;
+
+}
+
+
+
+#ic_explor:hover{
+    -fx-min-width: 57;
+    -fx-border-radius: 0 0 30 30;
+    -fx-border-width: 0 2 2  2;
+    -fx-border-color: #757579;
+
+}
+#ic_plus:hover{
+    -fx-min-width: 57;
+    -fx-border-radius: 0 0 30 30;
+    -fx-border-width: 0 2 2  2;
+    -fx-border-color: #757579;
+
+}
+#ic_heart:hover{
+    -fx-min-width: 57;
+    -fx-border-radius: 0 0 30 30;
+    -fx-border-width: 0 2 2  2;
+    -fx-border-color: #757579;
+
+}
+#ic_personal:hover{
+    -fx-min-width: 57;
+    -fx-border-radius: 0 0 30 30;
+    -fx-border-width: 0 2 2  2;
+    -fx-border-color: #757579;
+
+}
