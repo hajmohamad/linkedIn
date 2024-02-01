@@ -73,21 +73,24 @@ import java.util.ResourceBundle;
         userImage.setPickOnBounds(true);
         userImage.setPreserveRatio(true);
 
-        Label label1 = new Label("Label");
+        Label label1 = new Label(user.getID());
         label1.setPrefHeight(13.0);
         label1.setPrefWidth(98.0);
         label1.setLayoutX(74.0);
         label1.setLayoutY(12.0);
         AnchorPane.setLeftAnchor(label1, 74.0);
         AnchorPane.setTopAnchor(label1, 12.0);
-
-        Label label2 = new Label("Label");
+        if(user.getSpecialties().size()>2){
+        Label label2 = new Label(user.getSpecialties().get(0)+" "+user.getSpecialties().get(1));
         label2.setPrefHeight(17.0);
         label2.setPrefWidth(166.0);
         label2.setLayoutX(76.0);
         label2.setLayoutY(42.0);
         AnchorPane.setLeftAnchor(label2, 76.0);
         AnchorPane.setTopAnchor(label2, 42.0);
+        ap.getChildren().add(label2);
+
+        }
 
         ImageView addImage =  new ImageView(new Image(linkedIn.class.getResource("image/icon/bAdd.png").toString()));
         addImage.setFitHeight(40.0);
@@ -103,7 +106,7 @@ import java.util.ResourceBundle;
             AdminController.getInstance().addConnection(UserController.getInstance().getMainUser(),user);
         });
 
-        ap.getChildren().addAll(userImage, label1, label2, addImage);
+        ap.getChildren().addAll(userImage, label1, addImage);
         return ap;
     }
 

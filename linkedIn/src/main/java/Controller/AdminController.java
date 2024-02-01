@@ -27,6 +27,9 @@ public class AdminController {
         UserController.getInstance().setMainUser(user);
         return user;
     }
+    public void addUser(User user){
+        Graph.insertVertex(user);
+    }
     public void RemoveUser(User user){
         Graph.removeVertex(user);
     }
@@ -37,7 +40,11 @@ public class AdminController {
        Graph.removeEdge(user1.getID()+"-"+user2.getID());
    }
    public List<User> getAllUser(){
-       return (List<User>) Graph.vertices();
+        List<User> list=new ArrayList<>();
+        for(User user:Graph.vertices()){
+         list.add(user);
+        }
+       return list;
    }
    public List<User> getAllUserConnections(User user){
         return Graph.getNeighbors(user);

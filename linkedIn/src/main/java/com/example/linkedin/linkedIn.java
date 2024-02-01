@@ -1,5 +1,7 @@
 package com.example.linkedin;
 
+import Controller.AdminController;
+import Controller.UserController;
 import Model.graph.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -31,10 +33,9 @@ public class linkedIn extends Application {
     }
 
     public static void main(String[] args) {
-launch(args);
-        for(User user:readJsonFile("I:\\ramezon\\data structures\\social-network-hajehsan\\linkedIn\\src\\main\\resources\\com\\example\\linkedin\\users.json")){
-            System.out.println(user);
-        }
+
+     //launch(args);
+
     }
 
 

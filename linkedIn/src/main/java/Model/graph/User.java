@@ -42,6 +42,7 @@ public class User {
                 '}';
     }
 
+
     public void setConnectionsId(List<String> connectionsId) {
         this.connectionsId = connectionsId;
     }
@@ -60,6 +61,7 @@ public class User {
         this.field = field;
         Workplace = workplace;
         specialties = new ArrayList<>();
+        connectionsId=new ArrayList<>();
     }
 
     public String getID() {
@@ -130,11 +132,12 @@ public class User {
 
 
 
-    public ImageView getImage() {
-        return new ImageView(new Image(imagePath));
+    public Image getImage() {
+       return new Image(linkedIn.class.getResource(imagePath).toString());
     }
 
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
     }
+
 }
