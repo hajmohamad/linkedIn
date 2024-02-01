@@ -30,7 +30,7 @@ public class mainFxmlController  implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        p
+
 
     }
 }

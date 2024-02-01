@@ -2,6 +2,7 @@ package Model.graph;
 
 
 import com.example.linkedin.StartFxmlController;
+import com.example.linkedin.linkedIn;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -24,7 +25,7 @@ public class User extends ImageView {
 
 
     public User(String ID,String password, String name, String birthday, String lastname, String birthLocation, String field, String workplace) {
-        super.setImage(new Image(StartFxmlController.class.getResource("/image/icon/user.png").toString()));
+        super.setImage(new Image(linkedIn.class.getResource("image/icon/user.png").toString()));
         this.ID = ID;
         this.password = password;
         this.name = name;

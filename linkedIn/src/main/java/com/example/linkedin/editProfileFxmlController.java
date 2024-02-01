@@ -64,14 +64,13 @@ public class editProfileFxmlController implements Initializable {
     private TextField tf_workPlace;
 
     @FXML
-    private VBox vboc_specialties;
+    private VBox vbox_specialties;
 
     @FXML
     private HBox vbox_menuBar;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
 
 
 
