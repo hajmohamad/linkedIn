@@ -10,7 +10,7 @@ import java.util.ResourceBundle;
 
 public class AddPostFxmlController implements Initializable {
     @FXML
-    private AnchorPane ic_explor;
+    private AnchorPane ic_explore;
 
     @FXML
     private AnchorPane ic_heart;
@@ -33,12 +33,8 @@ public class AddPostFxmlController implements Initializable {
         ic_personal.setOnMouseClicked(event -> {
             PagesController.goEditeProfilePage();
         });
-        ic_explor.setOnMouseClicked(event -> {
+        ic_explore.setOnMouseClicked(event -> {
             PagesController.goExplorePage();
-        });
-
-        ic_plus.setOnMouseClicked(event -> {
-            PagesController.goAddPostPage();
         });
         ic_heart.setOnMouseClicked(event -> {
             PagesController.goSuggestionPage();

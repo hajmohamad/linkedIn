@@ -1,6 +1,7 @@
 package com.example.linkedin;
 
 import Controller.AdminController;
+import Controller.PriorityCalculation;
 import Controller.UserController;
 import Model.graph.User;
 import javafx.fxml.FXML;
@@ -13,11 +14,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
  public class SuggestionFxmlController implements Initializable {
      @FXML
-     private AnchorPane ic_explor;
+     private AnchorPane ic_explore;
 
      @FXML
      private AnchorPane ic_heart;
@@ -43,19 +45,16 @@ import java.util.ResourceBundle;
          ic_personal.setOnMouseClicked(event -> {
              PagesController.goEditeProfilePage();
          });
-         ic_explor.setOnMouseClicked(event -> {
+         ic_explore.setOnMouseClicked(event -> {
              PagesController.goExplorePage();
          });
 
          ic_plus.setOnMouseClicked(event -> {
              PagesController.goAddPostPage();
          });
-         ic_heart.setOnMouseClicked(event -> {
-             PagesController.goSuggestionPage();
-         });
      }
 
-     public AnchorPane CustomAnchorPane(User user) {
+     public AnchorPane customAnchorPane(User user) {
         menuBar();
         AnchorPane ap=new AnchorPane();
         ap.setMinHeight(74.0);
@@ -110,8 +109,12 @@ import java.util.ResourceBundle;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        vbox_Suggestion.getChildren().add(CustomAnchorPane(new User("1", "1", "1", "1", "1", "1", "1")));
-//        List<User> suggestion = PriorityCalculation.suggestions(userController.getMainUser() , 4) ;
+        mainUser = userController.getMainUser();
+        List<User> suggestion = PriorityCalculation.suggestions(mainUser, 10);
+        for (User user : suggestion) {
+            customAnchorPane(user) ;
+        }
     }
     UserController userController = UserController.getInstance() ;
+     User mainUser ;
 }

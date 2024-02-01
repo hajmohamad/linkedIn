@@ -10,7 +10,7 @@ import java.util.ResourceBundle;
 
 public class MainFxmlController implements Initializable {
     @FXML
-    private AnchorPane ic_explor;
+    private AnchorPane ic_explore;
 
     @FXML
     private AnchorPane ic_heart;
@@ -28,13 +28,10 @@ public class MainFxmlController implements Initializable {
     private HBox vbox_menuBar;
 
 public void menuBar(){
-    ic_home.setOnMouseClicked(event -> {
-        PagesController.goMainPage();
-    });
     ic_personal.setOnMouseClicked(event -> {
         PagesController.goEditeProfilePage();
     });
-    ic_explor.setOnMouseClicked(event -> {
+    ic_explore.setOnMouseClicked(event -> {
         PagesController.goExplorePage();
     });
 
@@ -47,7 +44,6 @@ public void menuBar(){
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-menuBar();
-
+        menuBar();
     }
 }

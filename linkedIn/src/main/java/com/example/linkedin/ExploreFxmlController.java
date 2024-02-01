@@ -10,7 +10,7 @@ import java.util.ResourceBundle;
 
 public class ExploreFxmlController implements Initializable {
     @FXML
-    private AnchorPane ic_explor;
+    private AnchorPane ic_explore;
 
     @FXML
     private AnchorPane ic_heart;
@@ -33,10 +33,6 @@ public class ExploreFxmlController implements Initializable {
         ic_personal.setOnMouseClicked(event -> {
             PagesController.goEditeProfilePage();
         });
-        ic_explor.setOnMouseClicked(event -> {
-            PagesController.goExplorePage();
-        });
-
         ic_plus.setOnMouseClicked(event -> {
             PagesController.goAddPostPage();
         });
@@ -48,6 +44,5 @@ public class ExploreFxmlController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         menuBar();
-
     }
 }

@@ -32,7 +32,7 @@
                         <Insets />
                      </HBox.margin>
                   </AnchorPane>
-                  <AnchorPane fx:id="ic_explor" layoutX="26.0" layoutY="21.0" prefHeight="200.0" prefWidth="200.0">
+                  <AnchorPane fx:id="ic_explore" layoutX="26.0" layoutY="21.0" prefHeight="200.0" prefWidth="200.0">
                      <children>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="3.0">
                            <image>

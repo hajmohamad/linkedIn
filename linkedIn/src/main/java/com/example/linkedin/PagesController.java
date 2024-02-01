@@ -71,7 +71,8 @@ public class PagesController {
         try {
             scene = new Scene(fxmlLoader.load(), 319, 650);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+//            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
         baseStage.setScene(scene);
         scene.setFill(Color.TRANSPARENT);

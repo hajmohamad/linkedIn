@@ -1,20 +1,17 @@
 package Controller;
 
 import Model.graph.AdjacencyMapGraph;
-import Model.graph.Edge;
 import Model.graph.User;
-import Model.graph.Vertex;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class AdminController {
-    private final AdjacencyMapGraph<User, String> Graph;
+    private final AdjacencyMapGraph<User, String> graph;
     public static AdminController adminController;
 
     public AdminController() {
-        Graph = new AdjacencyMapGraph<>();
+        graph = new AdjacencyMapGraph<>();
     }
 
     public static AdminController getInstance() {
@@ -25,7 +22,17 @@ public class AdminController {
     }
 
     public int size() {
-        return Graph.numVertices();
+        return graph.numVertices();
+    }
+    public User search (String id) {
+        User result = null ;
+        for(User user : graph.vertices()) {
+            if (user.getID().equals(id)) {
+                result = user ;
+                break;
+            }
+        }
+        return result ;
     }
 
     public User makeUser(String ID, String password, String name, String birthday, String birthLocation, String field, String workplace) {
@@ -34,35 +41,35 @@ public class AdminController {
     }
 
     public void addUser(User user) {
-        Graph.insertVertex(user);
+        graph.insertVertex(user);
     }
 
     public void RemoveUser(User user) {
-        Graph.removeVertex(user);
+        graph.removeVertex(user);
     }
 
     public void addConnection(User user1, User user2) {
-        Graph.insertEdge(user1, user2, user1.getID() + "-" + user2.getID());
+        graph.insertEdge(user1, user2, user1.getID() + "-" + user2.getID());
     }
 
     public void removeConnection(User user1, User user2) {
-        Graph.removeEdge(user1.getID() + "-" + user2.getID());
+        graph.removeEdge(user1.getID() + "-" + user2.getID());
     }
 
     public List<User> getAllUser() {
         List<User> result = new ArrayList<>();
-        for (User ob : Graph.vertices()) {
+        for (User ob : graph.vertices()) {
             result.add(ob);
         }
         return result;
     }
 
     public List<User> getAllUserConnections(User user) {
-        return Graph.getNeighbors(user);
+        return graph.getNeighbors(user);
     }
 
     public boolean hasConnection(User user1, User user2) {
-        return Graph.getEdge(user1, user2) != null;
+        return graph.getEdge(user1, user2) != null;
     }
 
     public boolean login(String username, String password) {
@@ -82,4 +89,3 @@ public class AdminController {
     }
 
 }
-
