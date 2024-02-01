@@ -26,7 +26,7 @@ public class linkedIn extends Application {
     }
 
     public static void main(String[] args) {
-//        launch();
+//launch();
         JSONParser parser = new JSONParser();
 
 //        String s = "[0,{\"1\":{\"2\":{\"3\":{\"4\":[5,{\"6\":7}]}}}}]";
