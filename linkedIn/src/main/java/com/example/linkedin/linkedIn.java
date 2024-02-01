@@ -1,12 +1,17 @@
 package com.example.linkedin;
 
+import Model.graph.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
+import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.json.simple.JSONObject;
 import org.json.simple.JSONArray;
@@ -26,38 +31,49 @@ public class linkedIn extends Application {
     }
 
     public static void main(String[] args) {
-//launch();
+
+        for(User user:readJsonFile("I:\\ramezon\\data structures\\social-network-hajehsan\\linkedIn\\src\\main\\resources\\com\\example\\linkedin\\users.json")){
+            System.out.println(user);
+        }
+    }
+
+
+    private static List<User> readJsonFile(String filePath) {
+        List<User> persons = new ArrayList<>();
         JSONParser parser = new JSONParser();
 
-//        String s = "[0,{\"1\":{\"2\":{\"3\":{\"4\":[5,{\"6\":7}]}}}}]";
+        try {
+            Object obj = parser.parse(new FileReader("I:\\users.json"));
+            JSONArray jsonArray = (JSONArray) obj;
 
-        String s = linkedIn.class.getResource("users.json").toString() ;
+            jsonArray.forEach(json -> {
+                JSONObject personObj = (JSONObject) json;
+                User person = new User(null, null, null, null, null, null, null);
+                person.setID((String) personObj.get("id"));
+                person.setName((String) personObj.get("name"));
+                person.setBirthday((String) personObj.get("dateOfBirth"));
+                person.setBirthLocation((String) personObj.get("universityLocation"));
+                person.setField((String) personObj.get("field"));
+                person.setWorkplace((String) personObj.get("workplace"));
 
-        try{
-            Object obj = parser.parse(s);
-            JSONArray array = (JSONArray)obj;
-            System.out.println("The 2nd element of array");
-            System.out.println(array.get(1));
-            System.out.println();
-            JSONObject obj2 = (JSONObject)array.get(1);
-            System.out.println("Field \"1\"");
-            System.out.println(obj2.get("1"));
-            s = "{}";
-            obj = parser.parse(s);
-            System.out.println(obj);
-            s = "[5,]";
-            obj = parser.parse(s);
-            System.out.println(obj);
-            s = "[5,,2]";
-            obj = parser.parse(s);
-            System.out.println(obj);
-        }catch(ParseException pe){
-            System.out.println("position: " + pe.getPosition());
-            System.out.println(pe);
+                List<String> specialties = new ArrayList<>();
+                JSONArray specialtiesArray = (JSONArray) personObj.get("specialties");
+                specialtiesArray.forEach(specialty -> specialties.add((String) specialty));
+                person.setSpecialties(specialties);
+
+                List<String> connectionIds = new ArrayList<>();
+                JSONArray connectionIdsArray = (JSONArray) personObj.get("connectionId");
+                connectionIdsArray.forEach(connectionId -> connectionIds.add((String) connectionId));
+                person.setConnectionsId(connectionIdsArray);
+
+                persons.add(person);
+            });
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
-
-//---------------------------
-
+        return persons;
     }
+
 }

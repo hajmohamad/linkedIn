@@ -2,6 +2,7 @@ package Model.graph;
 
 
 import com.example.linkedin.StartFxmlController;
+import com.example.linkedin.linkedIn;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -19,11 +20,38 @@ public class User extends ImageView {
     private String field;
     private String Workplace;
     private List<String> specialties;
+    private List<String> connectionsId;
 
+    public List<String> getConnectionsId() {
+        return connectionsId;
+    }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "ID='" + ID + '\'' +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", birthday='" + birthday + '\'' +
+                ", BirthLocation='" + BirthLocation + '\'' +
+                ", field='" + field + '\'' +
+                ", Workplace='" + Workplace + '\'' +
+                ", specialties=" + specialties +
+                ", connectionsId=" + connectionsId +
+                '}';
+    }
 
-    public User(String ID,String password, String name, String birthday, String birthLocation, String field, String workplace) {
-        super.setImage(new Image(StartFxmlController.class.getResource("/image/icon/user.png").toString()));
+    public void setConnectionsId(List<String> connectionsId) {
+        this.connectionsId = connectionsId;
+    }
+
+    public void setSpecialties(List<String> specialties) {
+        this.specialties = specialties;
+    }
+
+    public User(String ID, String password, String name, String birthday, String birthLocation, String field, String workplace) {
+        System.out.println(linkedIn.class.getResource("image/icon/bAdd.png").toString());
+        super.setImage(new Image(StartFxmlController.class.getResource("image/icon/bAdd.png").toString()));
         this.ID = ID;
         this.password = password;
         this.name = name;
@@ -102,6 +130,7 @@ public class User extends ImageView {
     public void setProfilePicture(String path){
         this.setImage(new Image(StartFxmlController.class.getResource(path).toString()));
     }
+
 
 
 }
