@@ -4,16 +4,16 @@ import Model.graph.User;
 
 import java.util.*;
 
-public class PriorityCalculation {
-    String name ;
-    String lastName ;
-    String  birthDay ;
-    String birthLocation ;
-    String field ;
-    String workPlace ;
-    List<String> specialties ;
-    List<Priority> myPriority ;
-    public List<User> suggestions (User inputUser , int order) {
+public abstract class PriorityCalculation {
+    private static String name ;
+    private static String lastName ;
+    private static String  birthDay ;
+    private static String birthLocation ;
+    private static String field ;
+    private static String workPlace ;
+    private static List<String> specialties ;
+    private static List<Priority> myPriority ;
+    public static List<User> suggestions (User inputUser , int order) {
         name= inputUser.getName() ;
         lastName= inputUser.getLastname() ;
         birthDay= inputUser.getBirthday();
@@ -34,9 +34,18 @@ public class PriorityCalculation {
             scoreUser.addScore(connectionScore(user));
             bord.add(scoreUser) ;
         }
-        List<ScoreUser> friends = goConnection(inputUser , 5) ;
-        List<User> result = new ArrayList<>() ;
         bord.stream().sorted();
+
+
+
+        List<ScoreUser> friends = goConnection(inputUser , 5) ;
+
+
+
+
+
+
+        List<User> result = new ArrayList<>() ;
         for (int i = 0 ; i < order ; i++) {
             result.add(bord.get(i).getUser());
         }
@@ -45,7 +54,7 @@ public class PriorityCalculation {
 
         return result ;
     }
-    public ScoreUser nameScore (User target) {
+    private static ScoreUser nameScore(User target) {
         int n = myPriority.indexOf(Priority.name); // ضریب اولویت
         int score = 0 ; // نمره دریافتی
         if (target.getName().equals(name)) {
@@ -54,7 +63,7 @@ public class PriorityCalculation {
         ScoreUser scoreUser = new ScoreUser(target , score) ;
         return scoreUser;
     }
-    public double lastNameScore (User target) {
+    private static double lastNameScore(User target) {
         int n = myPriority.indexOf(Priority.lastName); // ضریب اولویت
         int score = 0 ; // نمره دریافتی
         if (target.getLastname().equals(lastName)) {
@@ -62,7 +71,7 @@ public class PriorityCalculation {
         }
         return score;
     }
-    public double birthDayScore (User target) {
+    private static double birthDayScore(User target) {
         int n = myPriority.indexOf(Priority.birthDay); // ضریب اولویت
         int score = 0 ; // نمره دریافتی
         if (target.getBirthday().equals(birthDay)) {
@@ -70,7 +79,7 @@ public class PriorityCalculation {
         }
         return score;
     }
-    public double cityScore (User target) {
+    private static double cityScore(User target) {
         int n = myPriority.indexOf(Priority.birthLocation); // ضریب اولویت
         int score = 0 ; // نمره دریافتی
         if (target.getBirthLocation().equals(birthLocation)) {
@@ -78,7 +87,7 @@ public class PriorityCalculation {
         }
         return score;
     }
-    public double studyFieldScore (User target) {
+    private static double studyFieldScore(User target) {
         int n = myPriority.indexOf(Priority.field); // ضریب اولویت
         int score = 0 ; // نمره دریافتی
         if (target.getField().equals(field)) {
@@ -86,7 +95,7 @@ public class PriorityCalculation {
         }
         return score;
     }
-    public double workPlaceScore (User target) {
+    private static double workPlaceScore(User target) {
         int n = myPriority.indexOf(Priority.workPlace); // ضریب اولویت
         int score = 0 ; // نمره دریافتی
         if (target.getWorkplace().equals(workPlace)) {
@@ -94,7 +103,7 @@ public class PriorityCalculation {
         }
         return score;
     }
-    public double specialtiesScore (User target) {
+    private static double specialtiesScore(User target) {
         int n = myPriority.indexOf(Priority.specialties); // ضریب اولویت
         int score = 0 ; // نمره دریافتی
         for (String userSpecialty : target.getSpecialties()) {
@@ -106,11 +115,11 @@ public class PriorityCalculation {
         }
         return (score/2);
     }
-    public double connectionScore (User target) {
+    private static double connectionScore(User target) {
         return 0;
     }
-    AdminController admin = new AdminController() ;
-    public List<ScoreUser> goConnection (User person , int height) {
+    private static AdminController admin = new AdminController() ;
+    public static List<ScoreUser> goConnection(User person, int height) {
         List<ScoreUser> connections = new ArrayList<>() ;
         if (height > 1) {
             for (User user : admin.getAllUserConnections(person)) {
