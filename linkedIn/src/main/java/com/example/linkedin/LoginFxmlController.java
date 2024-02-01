@@ -1,6 +1,7 @@
 package com.example.linkedin;
 
 import Controller.AdminController;
+import Controller.UserController;
 import Model.graph.User;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -30,10 +31,9 @@ public class LoginFxmlController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ap_login.setOnMouseClicked(event -> {
-//            if (checkLogin()) {
-//                PagesController.goMainPage();
-//            }
-            PagesController.goMainPage();
+            if (checkLogin()) {
+                PagesController.goMainPage();
+            }
         });
     }
     private final AdminController adminController = AdminController.getInstance();
@@ -43,11 +43,17 @@ public class LoginFxmlController implements Initializable {
         String pass = tf_passWord.getText() ;
         if (!Objects.equals(id, "") && !Objects.equals(pass, "")) {
             User temp = adminController.search(id) ;
-            if (temp.getPassword().equals(pass)) {
-                mainUser = temp ;
-                return true;
+            if (temp != null) {
+                if (temp.getPassword().equals(pass)) {
+                    mainUser = temp;
+                    UserController userController = UserController.getInstance();
+                    userController.setMainUser(mainUser);
+                    return true;
+                } else {
+                    return false;
+                }
             } else {
-                return false;
+                return false ;
             }
         } else {
             return false ;

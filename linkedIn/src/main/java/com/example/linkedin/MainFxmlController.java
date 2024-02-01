@@ -1,5 +1,7 @@
 package com.example.linkedin;
 
+import Controller.UserController;
+import Model.graph.User;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
@@ -44,6 +46,10 @@ public void menuBar(){
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        UserController userController = UserController.getInstance();
+        mainUser = userController.getMainUser();
         menuBar();
     }
+    private UserController userController = UserController.getInstance();
+    private User mainUser ;
 }

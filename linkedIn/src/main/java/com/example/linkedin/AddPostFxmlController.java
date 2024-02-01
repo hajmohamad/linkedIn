@@ -1,5 +1,7 @@
 package com.example.linkedin;
 
+import Controller.UserController;
+import Model.graph.User;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
@@ -43,6 +45,10 @@ public class AddPostFxmlController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-menuBar();
+        UserController userController = UserController.getInstance();
+        mainUser = userController.getMainUser();
+        menuBar();
     }
+    private UserController userController = UserController.getInstance();
+    private User mainUser ;
 }

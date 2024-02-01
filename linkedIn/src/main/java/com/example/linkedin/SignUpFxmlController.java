@@ -1,6 +1,7 @@
 package com.example.linkedin;
 
 import Controller.AdminController;
+import Controller.UserController;
 import Model.graph.User;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -80,6 +81,12 @@ public class SignUpFxmlController implements Initializable {
         }
         return true ;
     }
+    private boolean checkRegexPass () {
+        String pass = tf_password.getText() ;
+        boolean t1 = Pattern.matches("[a-zA-Z0-9]+" , pass) ;
+        boolean t2 = Pattern.matches(".{6,}" , pass) ;
+        return  (t1 && t2) ;
+    }
     private boolean checkSignUp () {
         if (checkFieldFull()) {
             if (checkRegexPass()) {
@@ -94,16 +101,12 @@ public class SignUpFxmlController implements Initializable {
                     String work = tf_workPlace.getText() ;
                     temp = new User(id , pass , name , date , birthLocation , field , work) ;
                     mainUser = temp ;
+                    UserController userController = UserController.getInstance();
+                    userController.setMainUser(mainUser);
                     return true ;
                 }
             }
         }
         return false ;
-    }
-    private boolean checkRegexPass () {
-        String pass = tf_password.getText() ;
-        boolean t1 = Pattern.matches("[a-zA-Z0-9]+" , pass) ;
-        boolean t2 = Pattern.matches(".{6,}" , pass) ;
-        return  (t1 && t2) ;
     }
 }

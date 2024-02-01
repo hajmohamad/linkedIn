@@ -1,6 +1,7 @@
 package com.example.linkedin;
 
 import Controller.UserController;
+import Model.graph.User;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -122,17 +123,19 @@ public class EditProfileFxmlController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        userController=UserController.getInstance();
+        UserController userController = UserController.getInstance();
+        mainUser = userController.getMainUser();
+        menuBar();
         Map = new HashMap<>();
         ImageView_profile.setImage(userController.getMainUser().getImage());
-        menuBar();
         editPersonal();
         specialties();
         lbl_connectionNumber.setText(String.valueOf(UserController.mainUser.getConnectionsId().size()));
         lbl_name.setText(userController.getName());
 
     }
-    UserController userController  ;
 
+    private UserController userController = UserController.getInstance();
+    private User mainUser ;
 
 }

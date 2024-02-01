@@ -10,7 +10,7 @@ import java.io.IOException;
 public class PagesController {
     static Stage baseStage;
     public static void goLoginPage(){
-        FXMLLoader fxmlLoader = new FXMLLoader(LinkedIn.class.getResource("loginPageFxml.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(LinkedIn.class.getResource("LoginPageFxml.fxml"));
         Scene scene = null;
         try {
             scene = new Scene(fxmlLoader.load(), 319, 650);
@@ -22,7 +22,7 @@ public class PagesController {
 
     }
     public static void goSignupPage(){
-        FXMLLoader fxmlLoader = new FXMLLoader(LinkedIn.class.getResource("signupFxml.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(LinkedIn.class.getResource("SignupFxml.fxml"));
         Scene scene = null;
         try {
             scene = new Scene(fxmlLoader.load(), 319, 650);
@@ -33,7 +33,7 @@ public class PagesController {
         scene.setFill(Color.TRANSPARENT);
     }
     public static void goEditeProfilePage(){
-        FXMLLoader fxmlLoader = new FXMLLoader(LinkedIn.class.getResource("editeProfileFxml.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(LinkedIn.class.getResource("EditeProfileFxml.fxml"));
         Scene scene = null;
         try {
             scene = new Scene(fxmlLoader.load(), 319, 650);
@@ -44,7 +44,7 @@ public class PagesController {
         scene.setFill(Color.TRANSPARENT);
     }
     public static void goMainPage(){
-        FXMLLoader fxmlLoader = new FXMLLoader(LinkedIn.class.getResource("mainPageFxml.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(LinkedIn.class.getResource("MainPageFxml.fxml"));
         Scene scene = null;
         try {
             scene = new Scene(fxmlLoader.load(), 319, 650);
@@ -55,7 +55,7 @@ public class PagesController {
         scene.setFill(Color.TRANSPARENT);
     }
     public static void goAddPostPage(){
-        FXMLLoader fxmlLoader = new FXMLLoader(LinkedIn.class.getResource("addPostFxml.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(LinkedIn.class.getResource("AddPostFxml.fxml"));
         Scene scene = null;
         try {
             scene = new Scene(fxmlLoader.load(), 319, 650);
@@ -66,19 +66,18 @@ public class PagesController {
         scene.setFill(Color.TRANSPARENT);
     }
     public static void goSuggestionPage(){
-        FXMLLoader fxmlLoader = new FXMLLoader(LinkedIn.class.getResource("suggestionsFxml.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(LinkedIn.class.getResource("SuggestionsFxml.fxml"));
         Scene scene = null;
         try {
             scene = new Scene(fxmlLoader.load(), 319, 650);
         } catch (IOException e) {
-//            throw new RuntimeException(e);
-            System.out.println(e.getMessage());
+            throw new RuntimeException(e);
         }
         baseStage.setScene(scene);
         scene.setFill(Color.TRANSPARENT);
     }
     public static void goExplorePage(){
-        FXMLLoader fxmlLoader = new FXMLLoader(LinkedIn.class.getResource("exploreFxml.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(LinkedIn.class.getResource("ExploreFxml.fxml"));
         Scene scene = null;
         try {
             scene = new Scene(fxmlLoader.load(), 319, 650);

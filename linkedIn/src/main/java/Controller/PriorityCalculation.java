@@ -13,48 +13,46 @@ public abstract class PriorityCalculation {
     private static List<String> specialties ;
     private static List<Priority> myPriority = new ArrayList<>();
     public static List<User> suggestions (User inputUser , int order) {
-        myPriority.add(Priority.name);
-        name= inputUser.getName() ;
-        birthDay= inputUser.getBirthday();
-        birthLocation= inputUser.getBirthLocation();
-        field= inputUser.getField() ;
-        workPlace= inputUser.getWorkplace();
-        specialties = inputUser.getSpecialties();
-        List<ScoreUser> bord = new ArrayList<>() ;
-        for (User user : admin.getAllUser()) {
-            ScoreUser scoreUser = nameScore(user) ;  // شروع محاسبه ضریب اولیت هر فرد
-            scoreUser.addScore(birthDayScore(user));
-            scoreUser.addScore(cityScore(user));
-            scoreUser.addScore(studyFieldScore(user));
-            scoreUser.addScore(workPlaceScore(user));
-            scoreUser.addScore(specialtiesScore(user));
-            scoreUser.addScore(connectionScore(user));
-            bord.add(scoreUser) ;
-        }
+        if (inputUser != null) {
+            myPriority.add(Priority.name);
+            name = inputUser.getName();
+            birthDay = inputUser.getBirthday();
+            birthLocation = inputUser.getBirthLocation();
+            field = inputUser.getField();
+            workPlace = inputUser.getWorkplace();
+            specialties = inputUser.getSpecialties();
+            List<ScoreUser> bord = new ArrayList<>();
+            for (User user : admin.getAllUser()) {
+                ScoreUser scoreUser = nameScore(user);  // شروع محاسبه ضریب اولیت هر فرد
+                scoreUser.addScore(birthDayScore(user));
+                scoreUser.addScore(cityScore(user));
+                scoreUser.addScore(studyFieldScore(user));
+                scoreUser.addScore(workPlaceScore(user));
+                scoreUser.addScore(specialtiesScore(user));
+                scoreUser.addScore(connectionScore(user));
+                bord.add(scoreUser);
+            }
 //        bord.stream().sorted();
 
 
-
-//        List<ScoreUser> friends = goConnection(inputUser , 5) ;
-
+        List<ScoreUser> friends = goConnection(inputUser , 5) ;
 
 
+            List<User> result = new ArrayList<>();
+
+            if (bord.size() < order) {
+                order = bord.size();
+            }
+            for (int i = 0; i < order; i++) {
+                result.add(bord.get(i).getUser());
+                System.out.println(bord.get(i).getScore());
+            }
 
 
-
-        List<User> result = new ArrayList<>() ;
-
-        if (bord.size() < order) {
-            order = bord.size() ;
+            return result;
+        } else {
+            return null ;
         }
-        for (int i = 0 ; i < order ; i++) {
-            result.add(bord.get(i).getUser());
-            System.out.println(bord.get(i).getScore());
-        }
-
-
-
-        return result ;
     }
     private static ScoreUser nameScore(User target) {
         int n = myPriority.indexOf(Priority.name); // ضریب اولویت
