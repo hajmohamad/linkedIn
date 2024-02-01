@@ -11,8 +11,9 @@ public abstract class PriorityCalculation {
     private static String field ;
     private static String workPlace ;
     private static List<String> specialties ;
-    private static List<Priority> myPriority ;
+    private static List<Priority> myPriority = new ArrayList<>();
     public static List<User> suggestions (User inputUser , int order) {
+        myPriority.add(Priority.name);
         name= inputUser.getName() ;
         birthDay= inputUser.getBirthday();
         birthLocation= inputUser.getBirthLocation();
@@ -20,7 +21,6 @@ public abstract class PriorityCalculation {
         workPlace= inputUser.getWorkplace();
         specialties = inputUser.getSpecialties();
         List<ScoreUser> bord = new ArrayList<>() ;
-
         for (User user : admin.getAllUser()) {
             ScoreUser scoreUser = nameScore(user) ;  // شروع محاسبه ضریب اولیت هر فرد
             scoreUser.addScore(birthDayScore(user));
@@ -31,11 +31,11 @@ public abstract class PriorityCalculation {
             scoreUser.addScore(connectionScore(user));
             bord.add(scoreUser) ;
         }
-        bord.stream().sorted();
+//        bord.stream().sorted();
 
 
 
-        List<ScoreUser> friends = goConnection(inputUser , 5) ;
+//        List<ScoreUser> friends = goConnection(inputUser , 5) ;
 
 
 
@@ -43,8 +43,13 @@ public abstract class PriorityCalculation {
 
 
         List<User> result = new ArrayList<>() ;
+
+        if (bord.size() < order) {
+            order = bord.size() ;
+        }
         for (int i = 0 ; i < order ; i++) {
             result.add(bord.get(i).getUser());
+            System.out.println(bord.get(i).getScore());
         }
 
 
@@ -62,7 +67,7 @@ public abstract class PriorityCalculation {
     }
     private static double birthDayScore(User target) {
         int n = myPriority.indexOf(Priority.birthDay); // ضریب اولویت
-        int score = 0 ; // نمره دریافتی
+        double score = 0 ; // نمره دریافتی
         if (target.getBirthday().equals(birthDay)) {
             score += (10^n) ;
         }
@@ -70,7 +75,7 @@ public abstract class PriorityCalculation {
     }
     private static double cityScore(User target) {
         int n = myPriority.indexOf(Priority.birthLocation); // ضریب اولویت
-        int score = 0 ; // نمره دریافتی
+        double score = 0 ; // نمره دریافتی
         if (target.getBirthLocation().equals(birthLocation)) {
             score += (10^n) ;
         }
@@ -78,7 +83,7 @@ public abstract class PriorityCalculation {
     }
     private static double studyFieldScore(User target) {
         int n = myPriority.indexOf(Priority.field); // ضریب اولویت
-        int score = 0 ; // نمره دریافتی
+        double score = 0 ; // نمره دریافتی
         if (target.getField().equals(field)) {
             score += (10^n) ;
         }
@@ -86,7 +91,7 @@ public abstract class PriorityCalculation {
     }
     private static double workPlaceScore(User target) {
         int n = myPriority.indexOf(Priority.workPlace); // ضریب اولویت
-        int score = 0 ; // نمره دریافتی
+        double score = 0 ; // نمره دریافتی
         if (target.getWorkplace().equals(workPlace)) {
             score += (10^n) ;
         }
@@ -94,7 +99,7 @@ public abstract class PriorityCalculation {
     }
     private static double specialtiesScore(User target) {
         int n = myPriority.indexOf(Priority.specialties); // ضریب اولویت
-        int score = 0 ; // نمره دریافتی
+        double score = 0 ; // نمره دریافتی
         for (String userSpecialty : target.getSpecialties()) {
             for (String targetSpecialty : specialties) {
                 if ((userSpecialty).equals(targetSpecialty)) {
@@ -107,7 +112,7 @@ public abstract class PriorityCalculation {
     private static double connectionScore(User target) {
         return 0;
     }
-    private static AdminController admin = new AdminController() ;
+    private static AdminController admin = AdminController.getInstance() ;
     public static List<ScoreUser> goConnection(User person, int height) {
         List<ScoreUser> connections = new ArrayList<>() ;
         if (height > 1) {

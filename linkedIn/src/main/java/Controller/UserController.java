@@ -67,7 +67,7 @@ public class UserController {
         mainUser.setPassword(password);
     }
     public void setProfilePicture(String path){
-        mainUser.setProfilePicture(path);
+        mainUser.setImagePath(path);
     }
 
 

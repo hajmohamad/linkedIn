@@ -3,8 +3,10 @@ package Controller;
 import Model.graph.AdjacencyMapGraph;
 import Model.graph.Edge;
 import Model.graph.User;
+import Model.graph.Vertex;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class AdminController {
@@ -20,12 +22,16 @@ public class AdminController {
         }
         return adminController;
     }
-    public User addUser(String ID,String password, String name, String birthday, String birthLocation, String field, String workplace){
-        User user=new User(ID,password,name, birthday, birthLocation, field, workplace);
+    public int size () {
+        return Graph.numVertices() ;
+    }
+    public User addUser(User user){
         Graph.insertVertex(user);
-        UserController.getInstance();
-        UserController.getInstance().setMainUser(user);
         return user;
+    }
+    public User makeUser (String ID,String password, String name, String birthday, String birthLocation, String field ,String workplace) {
+        User user=new User(ID,password,name, birthday, birthLocation, field, workplace);
+        return user ;
     }
     public void RemoveUser(User user){
         Graph.removeVertex(user);
@@ -37,7 +43,11 @@ public class AdminController {
        Graph.removeEdge(user1.getID()+"-"+user2.getID());
    }
    public List<User> getAllUser(){
-       return (List<User>) Graph.vertices();
+        List<User> result = new ArrayList<>() ;
+        for (User ob : Graph.vertices()) {
+            result.add(ob);
+        }
+       return result;
    }
    public List<User> getAllUserConnections(User user){
         return Graph.getNeighbors(user);
