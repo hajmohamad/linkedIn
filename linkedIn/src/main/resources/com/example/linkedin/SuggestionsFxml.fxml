@@ -93,42 +93,48 @@
                         <AnchorPane prefHeight="40.0" prefWidth="200.0">
                            <children>
                               <Label layoutX="122.0" layoutY="12.0" prefHeight="17.0" prefWidth="42.0" text="name" AnchorPane.leftAnchor="122.0" AnchorPane.topAnchor="12.0" />
-                              <Spinner fx:id="sp_name" layoutX="203.0" layoutY="8.0" prefHeight="25.0" prefWidth="44.0" />
+                              <Spinner fx:id="sp_name" layoutX="200.0" layoutY="5.0" prefHeight="25.0" prefWidth="60.0" />
                            </children>
                         </AnchorPane>
                         <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="200.0">
                            <children>
                               <Label layoutX="122.0" layoutY="12.0" prefHeight="17.0" prefWidth="58.0" text="birthday" AnchorPane.leftAnchor="122.0" AnchorPane.topAnchor="12.0" />
-                              <Spinner fx:id="sp_birthday" layoutX="203.0" layoutY="8.0" prefHeight="25.0" prefWidth="44.0" />
+                              <Spinner fx:id="sp_birthday" layoutX="200.0" layoutY="5.0" prefHeight="25.0" prefWidth="60.0" />
                            </children>
                         </AnchorPane>
                         <AnchorPane layoutX="10.0" layoutY="50.0" prefHeight="40.0" prefWidth="200.0">
                            <children>
                               <Label layoutX="122.0" layoutY="12.0" prefHeight="17.0" prefWidth="71.0" text="birthlocation" AnchorPane.leftAnchor="122.0" AnchorPane.topAnchor="12.0" />
-                              <Spinner fx:id="sp_BirthLocation" layoutX="203.0" layoutY="8.0" prefHeight="25.0" prefWidth="44.0" />
+                              <Spinner fx:id="sp_BirthLocation" layoutX="200.0" layoutY="5.0" prefHeight="25.0" prefWidth="60.0" />
                            </children>
                         </AnchorPane>
                         <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="200.0">
                            <children>
                               <Label layoutX="122.0" layoutY="12.0" prefHeight="17.0" prefWidth="42.0" text="field" AnchorPane.leftAnchor="122.0" AnchorPane.topAnchor="12.0" />
-                              <Spinner fx:id="sp_field" layoutX="203.0" layoutY="8.0" prefHeight="25.0" prefWidth="44.0" />
+                              <Spinner fx:id="sp_field" layoutX="200.0" layoutY="5.0" prefHeight="25.0" prefWidth="60.0" />
                            </children>
                         </AnchorPane>
                         <AnchorPane layoutX="10.0" layoutY="50.0" prefHeight="40.0" prefWidth="200.0">
                            <children>
                               <Label layoutX="122.0" layoutY="12.0" prefHeight="17.0" prefWidth="71.0" text="workPlace" AnchorPane.leftAnchor="122.0" AnchorPane.topAnchor="12.0" />
-                              <Spinner fx:id="sp_workPlace" layoutX="203.0" layoutY="8.0" prefHeight="25.0" prefWidth="44.0" />
+                              <Spinner fx:id="sp_workPlace" layoutX="200.0" layoutY="5.0" prefHeight="25.0" prefWidth="60.0" />
                            </children>
                         </AnchorPane>
                         <AnchorPane layoutX="10.0" layoutY="90.0" prefHeight="40.0" prefWidth="200.0">
                            <children>
                               <Label layoutX="122.0" layoutY="12.0" prefHeight="17.0" prefWidth="71.0" text="specialties" AnchorPane.leftAnchor="122.0" AnchorPane.topAnchor="12.0" />
-                              <Spinner fx:id="sp_specialties" layoutX="203.0" layoutY="8.0" prefHeight="25.0" prefWidth="44.0" />
+                              <Spinner fx:id="sp_specialties" layoutX="200.0" layoutY="5.0" prefHeight="25.0" prefWidth="60.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="10.0" layoutY="176.0" prefHeight="40.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="122.0" layoutY="12.0" prefHeight="17.0" prefWidth="71.0" text="connections" AnchorPane.leftAnchor="122.0" AnchorPane.topAnchor="12.0" />
+                              <Spinner fx:id="sp_connections" layoutX="200.0" layoutY="5.0" prefHeight="25.0" prefWidth="60.0" />
                            </children>
                         </AnchorPane>
                      </children>
                   </VBox>
-                  <Button fx:id="btn_filter" layoutX="193.0" layoutY="241.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="58.0" text="filter" />
+                  <Button fx:id="btn_filter" layoutX="193.0" layoutY="241.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="filter" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="43.0" prefWidth="285.0" style="-fx-background-color: e3dede; -fx-background-radius: 30 30 0 0;">

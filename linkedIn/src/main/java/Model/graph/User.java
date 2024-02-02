@@ -4,6 +4,7 @@ package Model.graph;
 import Controller.AdminController;
 import com.example.linkedin.LinkedIn;
 import javafx.scene.image.Image;
+import javafx.scene.layout.Priority;
 
 import java.util.ArrayList;
 import java.util.List;

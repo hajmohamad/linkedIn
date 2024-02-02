@@ -1,8 +1,6 @@
 package com.example.linkedin;
 
-import Controller.AdminController;
-import Controller.PriorityCalculation;
-import Controller.UserController;
+import Controller.*;
 import Model.graph.User;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,10 +15,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
- public class SuggestionFxmlController implements Initializable {
+public class SuggestionFxmlController implements Initializable {
      @FXML
      private AnchorPane ap_filter;
 
@@ -59,6 +56,8 @@ import java.util.ResourceBundle;
 
      @FXML
      private Spinner<Integer> sp_specialties;
+     @FXML
+     private Spinner<Integer> sp_connections;
 
      @FXML
      private Spinner<Integer> sp_workPlace;
@@ -152,25 +151,41 @@ import java.util.ResourceBundle;
          ap.getChildren().addAll(userImage,Name, label1, addImage);
          return ap;
      }
-     public void filterPane(){
+     public void filterPane() {
          ap_filter.setVisible(false);
          ap_filter.setStyle("-fx-background-color: #ffffff;");
-         icon_filter.setOnMouseClicked(e->{
+         icon_filter.setOnMouseClicked(e -> {
              ap_filter.setVisible(!ap_filter.isVisible());
          });
-             sp_birthday.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 1));
-             sp_field.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 1));
-             sp_name.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 1));
-             sp_BirthLocation.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 1));
-             sp_specialties.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 1));
-             sp_workPlace.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 1));
-             btn_filter.setOnMouseClicked(event->{
-                 vbox_Suggestion.getChildren().clear();
-                 ap_filter.setVisible(false);
+         sp_name.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10, 1));
+         sp_birthday.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10, 1));
+         sp_BirthLocation.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10, 1));
+         sp_field.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10, 1));
+         sp_workPlace.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10, 1));
+         sp_specialties.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10, 1));
+         sp_connections.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10, 1));
 
-             });
+         btn_filter.setOnMouseClicked(event -> {
+             vbox_Suggestion.getChildren().clear();
+             ap_filter.setVisible(false);
+             setPriorities();
+             List<User> suggestion = PriorityCalculation.suggestions(mainUser, 10);
+             for (User user : suggestion) {
+                 vbox_Suggestion.getChildren().add(customAnchorPane(user));
+             }
+         });
+     }
 
-
+     private void setPriorities () {
+         Map <Priority ,Integer> priorities = new HashMap<>();
+         priorities.put(Priority.name , sp_name.getValue());
+         priorities.put(Priority.birthDay , sp_birthday.getValue());
+         priorities.put(Priority.birthLocation , sp_birthday.getValue());
+         priorities.put(Priority.field , sp_field.getValue());
+         priorities.put(Priority.workPlace , sp_workPlace.getValue());
+         priorities.put(Priority.specialties , sp_specialties.getValue());
+         priorities.put(Priority.connection , sp_connections.getValue());
+         PriorityCalculation.setMyPriority(priorities);
      }
 
      @Override
