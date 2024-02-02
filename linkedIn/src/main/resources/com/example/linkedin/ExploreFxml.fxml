@@ -76,7 +76,7 @@
                   <Insets top="5.0" />
                </padding>
             </HBox>
-            <AnchorPane prefHeight="43.0" prefWidth="290.0" style="-fx-background-color: e3dede; -fx-background-radius: 30 30 0 0;">
+            <AnchorPane prefHeight="43.0" prefWidth="291.0" style="-fx-background-color: e3dede; -fx-background-radius: 30 30 0 0;">
                <children>
                   <ImageView fitHeight="40.0" fitWidth="82.0" layoutX="14.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                      <image>

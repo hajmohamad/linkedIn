@@ -78,7 +78,7 @@ public class EditProfileFxmlController implements Initializable {
         tf_fieldOfStudy.setText(userController.getField()) ;
         tf_workPlace.setText(userController.getWorkplace()) ;
         ap_edit.setOnMouseClicked(event -> {
-            System.out.println(tf_password.getText());
+System.out.println(tf_password.getText());
             userController.setPassword(tf_password.getText());
             userController.editField(tf_fieldOfStudy.getText());
             userController.editBirthLocation(tf_birthLocation.getText());

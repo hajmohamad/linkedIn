@@ -6,7 +6,10 @@ import Controller.UserController;
 import Model.graph.User;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -18,6 +21,12 @@ import java.util.List;
 import java.util.ResourceBundle;
 
  public class SuggestionFxmlController implements Initializable {
+     @FXML
+     private AnchorPane ap_filter;
+
+     @FXML
+     private Button btn_filter;
+
      @FXML
      private AnchorPane ic_explore;
 
@@ -34,12 +43,35 @@ import java.util.ResourceBundle;
      private AnchorPane ic_plus;
 
      @FXML
+     private ImageView icon_filter;
+
+     @FXML
+     private Spinner<Integer> sp_BirthLocation;
+
+     @FXML
+     private Spinner<Integer> sp_birthday;
+
+     @FXML
+     private Spinner<Integer> sp_field;
+
+     @FXML
+     private Spinner<Integer> sp_name;
+
+     @FXML
+     private Spinner<Integer> sp_specialties;
+
+     @FXML
+     private Spinner<Integer> sp_workPlace;
+
+     @FXML
      private VBox vbox_Suggestion;
 
      @FXML
      private HBox vbox_menuBar;
 
+
      public void menuBar() {
+
          ic_home.setOnMouseClicked(event -> {
              PagesController.goMainPage();
          });
@@ -108,9 +140,31 @@ import java.util.ResourceBundle;
          ap.getChildren().addAll(userImage, label1, addImage);
          return ap;
      }
+     public void filterPane(){
+         ap_filter.setVisible(false);
+         ap_filter.setStyle("-fx-background-color: #ffffff;");
+         icon_filter.setOnMouseClicked(e->{
+             ap_filter.setVisible(!ap_filter.isVisible());
+         });
+             sp_birthday.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 1));
+             sp_field.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 1));
+             sp_name.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 1));
+             sp_BirthLocation.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 1));
+             sp_specialties.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 1));
+             sp_workPlace.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 1));
+             btn_filter.setOnMouseClicked(event->{
+                 vbox_Suggestion.getChildren().clear();
+
+
+                 ap_filter.setVisible(false);
+             });
+
+
+     }
 
      @Override
      public void initialize(URL url, ResourceBundle resourceBundle) {
+         filterPane();
          UserController userController = UserController.getInstance();
          mainUser = userController.getMainUser();
          List<User> suggestion = PriorityCalculation.suggestions(mainUser, 10);
