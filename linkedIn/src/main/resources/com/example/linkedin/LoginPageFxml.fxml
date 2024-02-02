@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -45,7 +46,7 @@
                      </image>
                   </ImageView>
                   <TextField fx:id="tf_Id" layoutX="23.0" layoutY="204.0" prefHeight="39.0" prefWidth="229.0" promptText="iD" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="203.5" />
-                  <TextField fx:id="tf_passWord" layoutX="28.0" layoutY="253.0" prefHeight="39.0" prefWidth="229.0" promptText="passWord" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="251.5" />
+                  <PasswordField fx:id="tf_passWord" layoutX="28.0" layoutY="253.0" prefHeight="39.0" prefWidth="229.0" promptText="passWord" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="251.5" />
                   <AnchorPane fx:id="ap_login" layoutX="27.0" layoutY="350.0" prefHeight="46.0" prefWidth="233.0" style="-fx-background-radius: 28px;" stylesheets="@startCss.css">
                      <children>
                         <Label alignment="CENTER" layoutX="41.0" layoutY="4.0" prefHeight="45.0" prefWidth="140.0" text="login">
@@ -55,7 +56,13 @@
                         </Label>
                      </children>
                   </AnchorPane>
-                  <Label fx:id="lbl_wrongLogin" layoutX="27.0" layoutY="298.0" prefHeight="17.0" prefWidth="88.0" textFill="#b51f1f" visible="false" />
+                  <Label fx:id="lbl_wrongLogin" layoutX="27.0" layoutY="298.0" prefHeight="17.0" prefWidth="223.0" textFill="#b51f1f" visible="false" />
+                  <ImageView fx:id="icon_eye" fitHeight="26.0" fitWidth="28.0" layoutX="224.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="258.0">
+                     <image>
+                        <Image url="@image/icon/eye.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="lbl_paswword" layoutX="34.0" layoutY="254.0" prefHeight="33.0" prefWidth="110.0" style="-fx-background-color: ffffff;" visible="false" />
                </children>
             </AnchorPane>
          </children>

@@ -1,5 +1,6 @@
 package com.example.linkedin;
 
+import Controller.AdminController;
 import Controller.UserController;
 import Model.graph.User;
 import javafx.fxml.FXML;
@@ -130,7 +131,7 @@ public class EditProfileFxmlController implements Initializable {
         ImageView_profile.setImage(userController.getMainUser().getImage());
         editPersonal();
         specialties();
-        lbl_connectionNumber.setText(String.valueOf(UserController.mainUser.getConnectionsId().size()));
+        lbl_connectionNumber.setText(String.valueOf(AdminController.getInstance().getAllUserConnections(mainUser).size()));
         lbl_name.setText(userController.getName());
 
     }

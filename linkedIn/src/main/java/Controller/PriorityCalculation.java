@@ -15,7 +15,7 @@ public abstract class PriorityCalculation {
     public static List<User> suggestions (User inputUser , int order) {
         if (inputUser != null) {
 //            لیست اولیت ها رو بهش بده
-            myPriority.add(Priority.name); //            اولیت تمرینی فقط نام تایین شده
+            myPriority.add(Priority.specialties); //            اولیت تمرینی فقط نام تایین شده
             name = inputUser.getName();
             birthDay = inputUser.getBirthday();
             birthLocation = inputUser.getBirthLocation();
@@ -23,6 +23,7 @@ public abstract class PriorityCalculation {
             workPlace = inputUser.getWorkplace();
             specialties = inputUser.getSpecialties();
             List<ScoreUser> bord = new ArrayList<>(); // مقایسه کردن ویزگی ها
+            List<User> allUsers = admin.getAllUser();
             for (User user : admin.getAllUser()) {
                 ScoreUser scoreUser = nameScore(user); // ساهت یک اسکور یوزر
                 scoreUser.addScore(birthDayScore(user)); // افزایش امتیاز ان
@@ -51,6 +52,7 @@ public abstract class PriorityCalculation {
                     result.add(bord.get(i).getUser());
                 }
             }
+            result.removeAll(UserController.mainUser.getMyConnection());
             return result;
         } else {
             return null;

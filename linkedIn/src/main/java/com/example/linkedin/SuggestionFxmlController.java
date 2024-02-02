@@ -102,6 +102,7 @@ import java.util.ResourceBundle;
          addImage.setOnMouseClicked(event -> {
              addImage.setImage(new Image(LinkedIn.class.getResource("image/icon/afAdd.png").toString()));
              AdminController.getInstance().addConnection(UserController.getInstance().getMainUser(), user);
+
          });
 
          ap.getChildren().addAll(userImage, label1, addImage);
@@ -114,8 +115,7 @@ import java.util.ResourceBundle;
          mainUser = userController.getMainUser();
          List<User> suggestion = PriorityCalculation.suggestions(mainUser, 10);
          for (User user : suggestion) {
-             customAnchorPane(user);
-             System.out.println(user.getID());
+             vbox_Suggestion.getChildren().add(customAnchorPane(user));
          }
      }
 

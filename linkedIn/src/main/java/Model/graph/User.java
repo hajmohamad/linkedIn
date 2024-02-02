@@ -1,6 +1,7 @@
 package Model.graph;
 
 
+import Controller.AdminController;
 import com.example.linkedin.LinkedIn;
 import javafx.scene.image.Image;
 
@@ -18,20 +19,25 @@ public class User {
     private String Workplace;
     private String imagePath;
     private List<String> specialties;
-    private List<String> connectionsId;
-    private List<User> myConnection = new ArrayList<>();
+    private List<String> tempIdArrayList;
+
+
 
     public List<User> getMyConnection() {
-        return myConnection;
+       return AdminController.getInstance().getAllUserConnections(this);
     }
     public void addConnection (User user) {
-        myConnection.add(user);
+        AdminController.getInstance().addConnection(this, user);
     }
     public void removeConnection (User user) {
-        myConnection.remove(user);
+   AdminController.getInstance().removeConnection(this, user);
     }
 
     public List<String> getConnectionsId() {
+        List<String> connectionsId = new ArrayList<>();
+        for (User user : getMyConnection()) {
+            connectionsId.add(user.getID());
+        }
         return connectionsId;
     }
 
@@ -46,14 +52,18 @@ public class User {
                 ", field='" + field + '\'' +
                 ", Workplace='" + Workplace + '\'' +
                 ", specialties=" + specialties +
-                ", connectionsId=" + connectionsId +
+                ", connectionsId=" + getConnectionsId() +
                 '}';
     }
 
 
     public void setConnectionsId(List<String> connectionsId) {
-        this.connectionsId = connectionsId;
+ for (String connection : connectionsId) {
+     addConnection(AdminController.adminController.getUserById(connection));
+ }
     }
+
+
 
     public void setSpecialties(List<String> specialties) {
         this.specialties = specialties;
@@ -69,7 +79,8 @@ public class User {
         this.field = field;
         Workplace = workplace;
         specialties = new ArrayList<>();
-        connectionsId=new ArrayList<>();
+        tempIdArrayList =new ArrayList<>();
+
     }
 
     public String getID() {
@@ -148,4 +159,11 @@ public class User {
         this.imagePath = imagePath;
     }
 
+    public List<String> getTempIdArrayList() {
+        return tempIdArrayList;
+    }
+
+    public void setTempIdArrayList(List<String> tempIdArrayList) {
+        this.tempIdArrayList = tempIdArrayList;
+    }
 }

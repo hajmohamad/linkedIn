@@ -65,12 +65,12 @@
                                        </image>
                                     </ImageView>
                                     <TextField fx:id="tf_photoPath" layoutX="26.0" layoutY="50.0" prefHeight="18.0" prefWidth="171.0" promptText="filePath" visible="false" />
-                                    <Label layoutX="103.0" layoutY="4.0" prefHeight="21.0" prefWidth="80.0" text="connection">
+                                    <Label layoutX="103.0" layoutY="28.0" prefHeight="21.0" prefWidth="80.0" text="connection">
                                        <font>
                                           <Font name="System Bold" size="15.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="lbl_connectionNumber" alignment="CENTER" layoutX="105.0" layoutY="21.0" prefHeight="34.0" prefWidth="76.0" text="numer" />
+                                    <Label fx:id="lbl_connectionNumber" alignment="CENTER" layoutX="105.0" layoutY="49.0" prefHeight="34.0" prefWidth="76.0" text="numer" />
                                  </children>
                                  <HBox.margin>
                                     <Insets bottom="6.0" />

@@ -13,6 +13,7 @@ import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
 import java.util.Date;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
@@ -50,9 +51,10 @@ public class SignUpFxmlController implements Initializable {
         tf_password.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String string, String t1) {
-
-                tf_password.setStyle("-fx-text-fill: red; -fx-border-color: red");
-                tf_password.setStyle("-fx-text-fill: green; -fx-border-color: green");
+                if(checkRegexPass()){
+                    tf_password.setStyle("-fx-text-fill: green; -fx-border-color: green");
+                }else{
+                tf_password.setStyle("-fx-text-fill: red; -fx-border-color: red");}
 
 
             }
@@ -61,19 +63,19 @@ public class SignUpFxmlController implements Initializable {
     private final AdminController adminController = AdminController.getInstance();
     private User mainUser = null ;
     private boolean checkFieldFull () {
-        if (tf_id.getText() == "") {
+        if (Objects.equals(tf_id.getText(), "")) {
             return false ;
         }
-        if (tf_birthLocation.getText() == "") {
+        if (Objects.equals(tf_birthLocation.getText(), "")) {
             return false ;
         }
-        if (tf_fieldOfStudy.getText() == "") {
+        if (Objects.equals(tf_fieldOfStudy.getText(), "")) {
             return false ;
         }
-        if (tf_name.getText() == "") {
+        if (Objects.equals(tf_name.getText(), "")) {
             return false ;
         }
-        if (tf_workPlace.getText() == "") {
+        if (Objects.equals(tf_workPlace.getText(), "")) {
             return false ;
         }
         if (datePicker_birthday == null) {
@@ -83,9 +85,7 @@ public class SignUpFxmlController implements Initializable {
     }
     private boolean checkRegexPass () {
         String pass = tf_password.getText() ;
-        boolean t1 = Pattern.matches("[a-zA-Z0-9]+" , pass) ;
-        boolean t2 = Pattern.matches(".{6,}" , pass) ;
-        return  (t1 && t2) ;
+        return  (Pattern.matches("^(?=.*[A-Za-z])(?=.*\\d).{6,}$" , pass)) ;
     }
     private boolean checkSignUp () {
         if (checkFieldFull()) {
@@ -101,6 +101,7 @@ public class SignUpFxmlController implements Initializable {
                     String work = tf_workPlace.getText() ;
                     temp = new User(id , pass , name , date , birthLocation , field , work) ;
                     mainUser = temp ;
+                    AdminController.getInstance().addUser(temp);
                     UserController userController = UserController.getInstance();
                     userController.setMainUser(mainUser);
                     return true ;

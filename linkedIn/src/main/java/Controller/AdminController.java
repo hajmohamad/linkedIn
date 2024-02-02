@@ -83,6 +83,14 @@ public class AdminController {
         }
         return false;
     }
+    public User getUserById(String id) {
+        for (User user : graph.vertices()) {
+            if (user.getID().equals(id)) {
+                return user;
+            }
+        }
+        return null;
+    }
 
     public void logout() {
         UserController.getInstance().setMainUser(null);

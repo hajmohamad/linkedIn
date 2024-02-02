@@ -30,21 +30,26 @@ public class LinkedIn extends Application {
         mainStage = stage;
     }
     public static void main(String[] args) {
+        adminController = AdminController.getInstance();
         String s = "E:\\users.json" ;
         for (User user : readJsonFile(s)) {
             adminController.addUser(user) ;
         }
 
         for (User user : adminController.getAllUser()) {
-            for (String id : user.getConnectionsId()) {
+            for (String id : user.getTempIdArrayList()) {
                 User temp = adminController.search(id);
                 user.addConnection(temp);
             }
         }
+        addHajMohammadUser();
         launch();
     }
+    public static void addHajMohammadUser(){
+        adminController.addUser(new User("Haj", "Haj", "mohamad", "2001/03/03", "shirvan", "computer science", "isfahan"));
+    }
 
-    private static final AdminController adminController = AdminController.getInstance() ;
+    private static  AdminController adminController  ;
     private static List<User> readJsonFile(String filePath) {
         List<User> persons = new ArrayList<>();
         JSONParser parser = new JSONParser();
@@ -71,7 +76,7 @@ public class LinkedIn extends Application {
                 List<String> connectionIds = new ArrayList<>();
                 JSONArray connectionIdsArray = (JSONArray) personObj.get("connectionId");
                 connectionIdsArray.forEach(connectionId -> connectionIds.add((String) connectionId));
-                person.setConnectionsId(connectionIdsArray);
+                person.setTempIdArrayList(connectionIdsArray);
 
                 persons.add(person);
             });
