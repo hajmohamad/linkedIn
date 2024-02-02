@@ -23,6 +23,7 @@ public class User {
     private List<String> specialties;
     private List<String> tempIdArrayList;
     private List<Post> posts;
+    public int number;
 
 
 
@@ -89,7 +90,7 @@ public class User {
 
     }
     public int getConnectNumber() {
-        return tempIdArrayList.size();
+        return number;
     }
 
     public String getID() {

@@ -50,6 +50,7 @@ public class AdminController {
 
     public void addConnection(User user1, User user2) {
         graph.insertEdge(user1, user2, user1.getID() + "-" + user2.getID());
+        user2.number++;
     }
 
     public void removeConnection(User user1, User user2) {
