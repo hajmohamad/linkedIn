@@ -29,6 +29,11 @@
                         <Image url="@image/icon/LinkedINlogo.png" />
                      </image>
                   </ImageView>
+                  <ImageView fx:id="ic_logout" fitHeight="30.0" fitWidth="30.0" layoutX="243.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/icon/logout.png" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
             <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="443.0" prefWidth="287.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="52.0">

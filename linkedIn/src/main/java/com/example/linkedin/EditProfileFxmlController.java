@@ -19,6 +19,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
@@ -58,6 +59,8 @@ public class EditProfileFxmlController implements Initializable {
     @FXML
     private TextField tf_workPlace;
     @FXML
+    private ImageView ic_logout;
+    @FXML
     private VBox vbox_specialties;
     private Map<TextField, String> Map ;
     @FXML
@@ -93,8 +96,17 @@ public class EditProfileFxmlController implements Initializable {
             userController.editBirthLocation(tf_birthLocation.getText());
             userController.editWorkplace(tf_workPlace.getText());
             editeSpecialties();
+            editProfile();
             PagesController.goEditeProfilePage();
         });
+    }
+    public void logout(){
+        ic_logout.setOnMouseClicked(event ->
+        {
+            AdminController.getInstance().logout();
+            PagesController.StartPage();
+        });
+
     }
     public void editeSpecialties(){
         for(TextField tf:Map.keySet()) {
@@ -109,6 +121,22 @@ public class EditProfileFxmlController implements Initializable {
         }
 
     }
+    public void editProfile(){
+        if(changed){
+        Path projectLocation = Paths.get("src/main/resources/com/example/linkedin/profile/").toAbsolutePath().normalize();
+        String s=projectLocation+UserController.mainUser.getID()+".jpg";
+        File a=new File(s);
+            if (a.exists() && !a.isDirectory()) {
+                boolean success = a.delete();}
+        File z=new File(ImageView_profile.getImage().getUrl());
+        try {
+            Files.copy(z.toPath(),a.toPath());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        mainUser.setImagePath(s);}
+    }
+    boolean changed = false;
     public void specialties(){
         for(String txt:UserController.getInstance().getSpecialties())  {
             TextField textField = new TextField();
@@ -137,20 +165,17 @@ public class EditProfileFxmlController implements Initializable {
             FileChooser fileChooser = new FileChooser();
             File sourceFile = fileChooser.showOpenDialog(PagesController.baseStage);
             if (sourceFile != null) {
-                try {
-                    File S=new File("src/main/resources/com/example/linkedin/profile/"+userController.getMainUser().getID()+".jpg");
-                    Files.copy(sourceFile.toPath(),S.toPath());
-                    File S1=new File(LinkedIn.class.getResource("/profile/")+userController.getMainUser().getID()+".jpg");
-                    Files.copy(sourceFile.toPath(),S1.toPath());
-                    ImageView_profile.setImage(new Image(LinkedIn.class.getResource("/profile/")+userController.getMainUser().getID()+".jpg"));
-                } catch (IOException e) {
-                    System.err.println("Error occurred while renaming file: " + e.getMessage());
-                }
+                changed=true;
+                    ImageView_profile.setImage(new Image(sourceFile.toString()));
+
             }
         });
     }
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        logout();
         imageChooser();
         UserController userController = UserController.getInstance();
         mainUser = userController.getMainUser();
