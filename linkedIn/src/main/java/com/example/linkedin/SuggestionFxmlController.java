@@ -115,6 +115,7 @@ import java.util.ResourceBundle;
          List<User> suggestion = PriorityCalculation.suggestions(mainUser, 10);
          for (User user : suggestion) {
              customAnchorPane(user);
+             System.out.println(user.getID());
          }
      }
 

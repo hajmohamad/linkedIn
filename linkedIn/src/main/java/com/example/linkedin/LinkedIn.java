@@ -34,6 +34,13 @@ public class LinkedIn extends Application {
         for (User user : readJsonFile(s)) {
             adminController.addUser(user) ;
         }
+
+        for (User user : adminController.getAllUser()) {
+            for (String id : user.getConnectionsId()) {
+                User temp = adminController.search(id);
+                user.addConnection(temp);
+            }
+        }
         launch();
     }
 

@@ -19,6 +19,17 @@ public class User {
     private String imagePath;
     private List<String> specialties;
     private List<String> connectionsId;
+    private List<User> myConnection = new ArrayList<>();
+
+    public List<User> getMyConnection() {
+        return myConnection;
+    }
+    public void addConnection (User user) {
+        myConnection.add(user);
+    }
+    public void removeConnection (User user) {
+        myConnection.remove(user);
+    }
 
     public List<String> getConnectionsId() {
         return connectionsId;

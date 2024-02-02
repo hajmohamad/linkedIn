@@ -70,5 +70,29 @@ public class UserController {
         mainUser.setImagePath(path);
     }
 
+    public void addConnection (User user) {
+        mainUser.addConnection(user);
+    }
+    public void addConnection (String id) {
+        User user = AdminController.getInstance().search(id) ;
+        if (user != null) {
+            mainUser.addConnection(user);
+        }
+    }
+    public void removeConnection (User user) {
+        mainUser.removeConnection(user);
+    }
+    public void removeConnection (String id) {
+        User user1 = null ;
+        for (User user : mainUser.getMyConnection()) {
+            if (user.getID().equals(id)) {
+                user1 = user ;
+                break;
+            }
+        }
 
+        if (user1 != null) {
+            mainUser.removeConnection(user1);
+        }
+    }
 }
