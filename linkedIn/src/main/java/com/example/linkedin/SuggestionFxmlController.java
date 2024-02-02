@@ -94,7 +94,7 @@ public class SuggestionFxmlController implements Initializable {
          ap.setStyle("-fx-border-color: #8d8888; -fx-border-radius: 20px; -fx-border-width: 2px;");
 
          VBox.setMargin(ap, new javafx.geometry.Insets(5.0, 15, 5.0, 5.0));
-         ImageView userImage = new ImageView(new Image(LinkedIn.class.getResource("image/icon/user.png").toString()));
+         ImageView userImage = new ImageView(user.getImage());
          userImage.setFitHeight(48.0);
          userImage.setFitWidth(48.0);
          userImage.setLayoutX(14.0);

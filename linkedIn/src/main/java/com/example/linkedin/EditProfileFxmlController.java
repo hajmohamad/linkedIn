@@ -13,6 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Polygon;
 import javafx.stage.FileChooser;
 
 import java.io.File;
@@ -186,7 +187,15 @@ public class EditProfileFxmlController implements Initializable {
         specialties();
         lbl_connectionNumber.setText(String.valueOf(AdminController.getInstance().getAllUserConnections(mainUser).size()));
         lbl_name.setText(userController.getName());
+        Polygon clip = new Polygon(
+                0, 0,
+                150, 0,
+                150, 150,
+                0, 150
+        );
 
+        // Set the clip of the image view to the polygon
+        ImageView_profile.setClip(clip);
     }
 
     private UserController userController = UserController.getInstance();

@@ -1,11 +1,14 @@
 package com.example.linkedin;
 
+import Controller.AdminController;
 import Controller.UserController;
+import Model.graph.Post;
 import Model.graph.User;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -46,11 +49,26 @@ public void menuBar(){
         PagesController.goSuggestionPage();
     });
     }
+    @FXML
+    private VBox vbox_posts;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         UserController userController = UserController.getInstance();
         mainUser = userController.getMainUser();
         menuBar();
+
+        s();
+
+    }
+    public String s(){
+        for(User u: AdminController.getInstance().getAllUserConnections(mainUser)){
+            for(Post p:u.getPosts()){
+                vbox_posts.getChildren().add(p.makeAnchorPane());
+return "s";
+            }
+
+        }
+        return "Asd";
     }
     private UserController userController = UserController.getInstance();
     private User mainUser ;

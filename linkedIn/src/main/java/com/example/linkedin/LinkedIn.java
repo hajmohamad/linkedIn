@@ -1,6 +1,7 @@
 package com.example.linkedin;
 
 import Controller.AdminController;
+import Model.graph.Post;
 import Model.graph.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -53,7 +54,20 @@ public class LinkedIn extends Application {
     public static void addHajMohammadUser(){
         User a=new User("Haj", "Haj", "mohamad", "2001/03/03", "shirvan", "computer science", "isfahan");
         adminController.addUser(a);
-        ImageView i=new ImageView(a.getImage());
+        User ehsan=new User("ehsan", "1", "ehsan", "2001/03/03", "shirvan", "it", "isfahan");
+        ehsan.setImagePath(Paths.get("src/main/resources/com/example/linkedin/profile/ehsan.jpg").toAbsolutePath().normalize().toString());
+        adminController.addUser(ehsan);
+        User ramezon=new User("ramezon", "2", "ramezon", "2001/03/03", "shirvan", "it", "isfahan");
+        ramezon.setImagePath(Paths.get("src/main/resources/com/example/linkedin/profile/ramezon.jpg").toAbsolutePath().normalize().toString());
+        adminController.addUser(ramezon);
+        User erf=new User("erf", "3", "erf", "2001/03/03", "shirvan", "it", "isfahan");
+        erf.setImagePath(Paths.get("src/main/resources/com/example/linkedin/profile/ramezon.jpg").toAbsolutePath().normalize().toString());
+        adminController.addUser(erf);
+        adminController.addConnection(a,ehsan);
+        adminController.addConnection(a,ramezon);
+        adminController.addConnection(a,erf);
+        ehsan.setPosts(new Post(Paths.get("src/main/resources/com/example/linkedin/image/p1.jpg").toAbsolutePath().normalize().toString(),ehsan,"hidasjskjdaljdsalkjksldajkljd nadsj djskajksdajk"));
+
     }
 
     private static  AdminController adminController  ;

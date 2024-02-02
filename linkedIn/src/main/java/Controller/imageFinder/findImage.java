@@ -10,6 +10,7 @@ public class
 findImage {
     static ArrayList<String> lastImageLinks;
     public static ArrayList<String> getLink(String order) {
+        System.out.println(order);
         ArrayList<String> imageList = new ArrayList<String>();
         try {
             ProcessBuilder processBuilder = new ProcessBuilder("cmd.exe", "/c", "python", "I:\\ramezon\\data structures\\social-network-hajehsan\\linkedIn\\src\\main\\java\\Controller\\imageFinder\\findImage.py");
@@ -41,13 +42,6 @@ findImage {
     return imageList;
 
     }
-
-    public static void main(String[] args) {
-        getLink("tree");
-    }
-
-
-
 
 
 }

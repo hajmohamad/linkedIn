@@ -22,6 +22,8 @@ public class User {
     private String imagePath;
     private List<String> specialties;
     private List<String> tempIdArrayList;
+    private List<Post> posts;
+
 
 
 
@@ -78,12 +80,16 @@ public class User {
         this.password = password;
         this.name = name;
         this.birthday = birthday;
+        posts=new ArrayList<>();
         BirthLocation = birthLocation;
         this.field = field;
         Workplace = workplace;
         specialties = new ArrayList<>();
         tempIdArrayList =new ArrayList<>();
 
+    }
+    public int getConnectNumber() {
+        return tempIdArrayList.size();
     }
 
     public String getID() {
@@ -168,5 +174,13 @@ public class User {
 
     public void setTempIdArrayList(List<String> tempIdArrayList) {
         this.tempIdArrayList = tempIdArrayList;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(Post posts) {
+        this.posts.add(posts);
     }
 }
