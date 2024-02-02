@@ -12,6 +12,8 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import org.json.simple.JSONObject;
@@ -32,8 +34,6 @@ public class LinkedIn extends Application {
         mainStage = stage;
     }
     public static void main(String[] args) {
-        ImageView v =new ImageView(new Image(LinkedIn.class.getResource("profile/user.png").toString()));
-        System.out.println(v.getImage());
         adminController = AdminController.getInstance();
         String s = "src/main/resources/com/example/linkedin/users.json" ;
         for (User user : readJsonFile(s)) {
@@ -47,10 +47,13 @@ public class LinkedIn extends Application {
             }
         }
         addHajMohammadUser();
+
         launch();
     }
     public static void addHajMohammadUser(){
-        adminController.addUser(new User("Haj", "Haj", "mohamad", "2001/03/03", "shirvan", "computer science", "isfahan"));
+        User a=new User("Haj", "Haj", "mohamad", "2001/03/03", "shirvan", "computer science", "isfahan");
+        adminController.addUser(a);
+        ImageView i=new ImageView(a.getImage());
     }
 
     private static  AdminController adminController  ;

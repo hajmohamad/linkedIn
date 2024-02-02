@@ -54,6 +54,17 @@ public class PagesController {
         baseStage.setScene(scene);
         scene.setFill(Color.TRANSPARENT);
     }
+    public static void StartPage(){
+        FXMLLoader fxmlLoader = new FXMLLoader(LinkedIn.class.getResource("StartFxml.fxml"));
+        Scene scene = null;
+        try {
+            scene = new Scene(fxmlLoader.load(), 319, 650);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        baseStage.setScene(scene);
+        scene.setFill(Color.TRANSPARENT);
+    }
     public static void goAddPostPage(){
         FXMLLoader fxmlLoader = new FXMLLoader(LinkedIn.class.getResource("AddPostFxml.fxml"));
         Scene scene = null;
