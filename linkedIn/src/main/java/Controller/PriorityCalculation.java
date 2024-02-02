@@ -15,7 +15,7 @@ public abstract class PriorityCalculation {
     public static List<User> suggestions (User inputUser , int order) {
         if (inputUser != null) {
 //            لیست اولیت ها رو بهش بده
-            myPriority.add(Priority.specialties); //            اولیت تمرینی فقط نام تایین شده
+            myPriority.add(Priority.name); //            اولیت تمرینی فقط نام تایین شده
             name = inputUser.getName();
             birthDay = inputUser.getBirthday();
             birthLocation = inputUser.getBirthLocation();
@@ -34,8 +34,8 @@ public abstract class PriorityCalculation {
                 bord.add(scoreUser);
             }
 
-            bord.stream().sorted(); // چک کن
-
+            bord.sort(Comparator.comparingDouble(ScoreUser::getScore));
+            System.out.println(bord.get(0).getScore()+" "+bord.get(bord.size()-1).getScore());
             List<ScoreUser> friends = goConnection(inputUser, 5); // travers on connection // عدد داخل تابع عمق جستجو رو نشون میده
 
 

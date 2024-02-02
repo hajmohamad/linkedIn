@@ -8,11 +8,18 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
+
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -57,6 +64,8 @@ public class EditProfileFxmlController implements Initializable {
     private HBox vbox_menuBar;
 
     public void menuBar(){
+        ic_personal.setStyle("-fx-background-color: #b7b3b3; -fx-background-radius: 0 0 30 30;");
+
         ic_home.setOnMouseClicked(event -> {
             PagesController.goMainPage();
         });
@@ -78,7 +87,7 @@ public class EditProfileFxmlController implements Initializable {
         tf_fieldOfStudy.setText(userController.getField()) ;
         tf_workPlace.setText(userController.getWorkplace()) ;
         ap_edit.setOnMouseClicked(event -> {
-System.out.println(tf_password.getText());
+            userController.setProfilePicture(LinkedIn.class.getResource("/profile/")+userController.getMainUser().getID()+".jpg");
             userController.setPassword(tf_password.getText());
             userController.editField(tf_fieldOfStudy.getText());
             userController.editBirthLocation(tf_birthLocation.getText());
@@ -122,8 +131,27 @@ System.out.println(tf_password.getText());
 
 
     }
+    public void imageChooser(){
+        icon_picture.setOnMouseClicked(event -> {
+
+            FileChooser fileChooser = new FileChooser();
+            File sourceFile = fileChooser.showOpenDialog(PagesController.baseStage);
+            if (sourceFile != null) {
+                try {
+                    File S=new File("src/main/resources/com/example/linkedin/profile/"+userController.getMainUser().getID()+".jpg");
+                    Files.copy(sourceFile.toPath(),S.toPath());
+                    File S1=new File(LinkedIn.class.getResource("/profile/")+userController.getMainUser().getID()+".jpg");
+                    Files.copy(sourceFile.toPath(),S1.toPath());
+                    ImageView_profile.setImage(new Image(LinkedIn.class.getResource("/profile/")+userController.getMainUser().getID()+".jpg"));
+                } catch (IOException e) {
+                    System.err.println("Error occurred while renaming file: " + e.getMessage());
+                }
+            }
+        });
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        imageChooser();
         UserController userController = UserController.getInstance();
         mainUser = userController.getMainUser();
         menuBar();

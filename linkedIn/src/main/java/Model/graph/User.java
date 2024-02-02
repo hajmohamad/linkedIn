@@ -70,7 +70,7 @@ public class User {
     }
 
     public User(String ID, String password, String name, String birthday, String birthLocation, String field, String workplace) {
-        imagePath = "image/icon/user.png";
+        imagePath = LinkedIn.class.getResource("profile/user.png").toString();
         this.ID = ID;
         this.password = password;
         this.name = name;
@@ -152,7 +152,7 @@ public class User {
 
 
     public Image getImage() {
-       return new Image(LinkedIn.class.getResource(imagePath).toString());
+       return new Image(imagePath);
     }
 
     public void setImagePath(String imagePath) {

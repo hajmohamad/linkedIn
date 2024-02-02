@@ -29,6 +29,8 @@ public class ExploreFxmlController implements Initializable {
     @FXML
     private HBox vbox_menuBar;
     public void menuBar(){
+        ic_explore.setStyle("-fx-background-color: #b7b3b3; -fx-background-radius: 0 0 30 30;");
+
         ic_home.setOnMouseClicked(event -> {
             PagesController.goMainPage();
         });

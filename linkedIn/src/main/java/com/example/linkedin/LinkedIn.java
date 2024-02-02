@@ -5,6 +5,8 @@ import Model.graph.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -30,8 +32,10 @@ public class LinkedIn extends Application {
         mainStage = stage;
     }
     public static void main(String[] args) {
+        ImageView v =new ImageView(new Image(LinkedIn.class.getResource("profile/user.png").toString()));
+        System.out.println(v.getImage());
         adminController = AdminController.getInstance();
-        String s = "E:\\users.json" ;
+        String s = "src/main/resources/com/example/linkedin/users.json" ;
         for (User user : readJsonFile(s)) {
             adminController.addUser(user) ;
         }

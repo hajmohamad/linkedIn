@@ -2,6 +2,9 @@ package Controller;
 
 import Model.graph.User;
 
+import java.util.Comparator;
+import java.util.List;
+
 class ScoreUser {
     private User user;
     private double score;

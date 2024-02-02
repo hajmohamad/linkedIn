@@ -71,7 +71,7 @@ import java.util.ResourceBundle;
 
 
      public void menuBar() {
-
+         ic_heart.setStyle("-fx-background-color: #b7b3b3; -fx-background-radius: 0 0 30 30;");
          ic_home.setOnMouseClicked(event -> {
              PagesController.goMainPage();
          });
@@ -109,7 +109,13 @@ import java.util.ResourceBundle;
          label1.setLayoutX(74.0);
          label1.setLayoutY(12.0);
          AnchorPane.setLeftAnchor(label1, 74.0);
-         AnchorPane.setTopAnchor(label1, 12.0);
+         Label Name = new Label(user.getName());
+         Name.setPrefHeight(17.0);
+         Name.setPrefWidth(98.0);
+         Name.setLayoutX(74.0);
+         Name.setLayoutY(22.0);
+         AnchorPane.setLeftAnchor(Name, 74.0);
+         AnchorPane.setTopAnchor(Name, 26.0);
          if (user.getSpecialties().size() > 2) {
              Label label2 = new Label(user.getSpecialties().get(0) + " " + user.getSpecialties().get(1));
              label2.setPrefHeight(17.0);
@@ -131,13 +137,19 @@ import java.util.ResourceBundle;
          addImage.setPreserveRatio(true);
          AnchorPane.setLeftAnchor(addImage, 223.0);
          AnchorPane.setTopAnchor(addImage, 20.0);
+         Image badd=new Image(addImage.getImage().getUrl());
          addImage.setOnMouseClicked(event -> {
-             addImage.setImage(new Image(LinkedIn.class.getResource("image/icon/afAdd.png").toString()));
-             AdminController.getInstance().addConnection(UserController.getInstance().getMainUser(), user);
+             if(addImage.getImage().getUrl().equals(badd.getUrl())) {
+                 addImage.setImage(new Image(LinkedIn.class.getResource("image/icon/afAdd.png").toString()));
+                 AdminController.getInstance().addConnection(UserController.getInstance().getMainUser(), user);
+             }else {
+                 addImage.setImage(badd);
+                 AdminController.getInstance().removeConnection(UserController.getInstance().getMainUser(), user);
+             }
 
          });
 
-         ap.getChildren().addAll(userImage, label1, addImage);
+         ap.getChildren().addAll(userImage,Name, label1, addImage);
          return ap;
      }
      public void filterPane(){
@@ -154,9 +166,8 @@ import java.util.ResourceBundle;
              sp_workPlace.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 1));
              btn_filter.setOnMouseClicked(event->{
                  vbox_Suggestion.getChildren().clear();
-
-
                  ap_filter.setVisible(false);
+
              });
 
 
