@@ -47,10 +47,13 @@ public class LinkedIn extends Application {
             }
         }
         addHajMohammadUser();
+
         launch();
     }
     public static void addHajMohammadUser(){
-        adminController.addUser(new User("Haj", "Haj", "mohamad", "2001/03/03", "shirvan", "computer science", "isfahan"));
+        User a=new User("Haj", "Haj", "mohamad", "2001/03/03", "shirvan", "computer science", "isfahan");
+        adminController.addUser(a);
+        ImageView i=new ImageView(a.getImage());
     }
 
     private static  AdminController adminController  ;

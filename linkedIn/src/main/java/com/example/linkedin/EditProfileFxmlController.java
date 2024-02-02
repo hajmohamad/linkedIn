@@ -90,7 +90,6 @@ public class EditProfileFxmlController implements Initializable {
         tf_fieldOfStudy.setText(userController.getField()) ;
         tf_workPlace.setText(userController.getWorkplace()) ;
         ap_edit.setOnMouseClicked(event -> {
-            userController.setProfilePicture(LinkedIn.class.getResource("/profile/")+userController.getMainUser().getID()+".jpg");
             userController.setPassword(tf_password.getText());
             userController.editField(tf_fieldOfStudy.getText());
             userController.editBirthLocation(tf_birthLocation.getText());
@@ -123,9 +122,10 @@ public class EditProfileFxmlController implements Initializable {
     }
     public void editProfile(){
         if(changed){
-        Path projectLocation = Paths.get("src/main/resources/com/example/linkedin/profile/").toAbsolutePath().normalize();
+            Path projectLocation = Paths.get("src/main/resources/com/example/linkedin/profile/").toAbsolutePath().normalize();
         String s=projectLocation+UserController.mainUser.getID()+".jpg";
-        File a=new File(s);
+            userController.setProfilePicture(s);
+            File a=new File(s);
             if (a.exists() && !a.isDirectory()) {
                 boolean success = a.delete();}
         File z=new File(ImageView_profile.getImage().getUrl());

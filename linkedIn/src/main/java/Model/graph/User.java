@@ -5,6 +5,7 @@ import Controller.AdminController;
 import com.example.linkedin.LinkedIn;
 import javafx.scene.image.Image;
 
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,7 +71,8 @@ public class User {
     }
 
     public User(String ID, String password, String name, String birthday, String birthLocation, String field, String workplace) {
-        imagePath = LinkedIn.class.getResource("profile/user.png").toString();
+        String S=Paths.get("src/main/resources/com/example/linkedin/profile/user.png").toAbsolutePath().normalize().toString();
+        imagePath= S;
         this.ID = ID;
         this.password = password;
         this.name = name;
