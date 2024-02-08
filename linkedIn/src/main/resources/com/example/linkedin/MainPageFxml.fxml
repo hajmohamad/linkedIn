@@ -17,9 +17,23 @@
       </ImageView>
       <AnchorPane layoutX="11.0" layoutY="51.0" prefHeight="545.0" prefWidth="287.0" style="-fx-background-color: #ffffff; -fx-background-radius: 30px;" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0">
          <children>
+            <AnchorPane prefHeight="43.0" prefWidth="290.0" style="-fx-background-color: e3dede; -fx-background-radius: 30 30 0 0;">
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="82.0" layoutX="14.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/icon/LinkedINlogo.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <ScrollPane hbarPolicy="NEVER" prefHeight="458.0" prefWidth="290.0" AnchorPane.topAnchor="40.0">
+               <content>
+                  <VBox fx:id="vbox_posts" prefHeight="200.0" prefWidth="100.0" />
+               </content>
+            </ScrollPane>
             <HBox fx:id="vbox_menuBar" layoutY="495.0" prefHeight="50.0" prefWidth="290.0" stylesheets="@menuBar.css">
                <children>
-                  <AnchorPane fx:id="ic_home" prefHeight="23.0" prefWidth="32.0">
+                  <AnchorPane fx:id="ic_home" prefHeight="200.0" prefWidth="199.0">
                      <children>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="3.0">
                            <image>
@@ -36,14 +50,14 @@
                   </AnchorPane>
                   <AnchorPane fx:id="ic_explore" layoutX="26.0" layoutY="21.0" prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="3.0">
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="3.0">
                            <image>
                               <Image url="@image/icon/explore.png" />
                            </image>
                         </ImageView>
                      </children>
                      <HBox.margin>
-                        <Insets left="10.0" />
+                        <Insets />
                      </HBox.margin>
                   </AnchorPane>
                   <AnchorPane fx:id="ic_plus" layoutX="308.0" layoutY="21.0" prefHeight="200.0" prefWidth="200.0">
@@ -78,20 +92,6 @@
                   <Insets top="5.0" />
                </padding>
             </HBox>
-            <AnchorPane prefHeight="43.0" prefWidth="290.0" style="-fx-background-color: e3dede; -fx-background-radius: 30 30 0 0;">
-               <children>
-                  <ImageView fitHeight="40.0" fitWidth="82.0" layoutX="14.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@image/icon/LinkedINlogo.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </AnchorPane>
-            <ScrollPane hbarPolicy="NEVER" prefHeight="453.0" prefWidth="290.0" AnchorPane.topAnchor="40.0">
-               <content>
-                  <VBox fx:id="vbox_posts" prefHeight="200.0" prefWidth="100.0" />
-               </content>
-            </ScrollPane>
          </children>
       </AnchorPane>
    </children>

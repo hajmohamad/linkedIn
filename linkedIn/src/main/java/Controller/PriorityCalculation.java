@@ -51,9 +51,8 @@ public abstract class PriorityCalculation {
                 }
             }
             result.remove(inputUser) ;
-            Set<User> setResult = new HashSet<>(userHaveLotConnections());
-            setResult.addAll(result);
-            List <User> myFinalResult = new ArrayList<>(setResult);
+            List <User> myFinalResult = new ArrayList<>(result);
+            myFinalResult.removeAll(UserController.mainUser.getMyConnection());
             return myFinalResult;
         } else {
             return null;
@@ -158,13 +157,6 @@ public abstract class PriorityCalculation {
         } else {
             return null ;
         }
-    }
-    public static List<User> userHaveLotConnections() {
-        List<User> allUsers = new ArrayList<User>();
-        allUsers=admin.getAllUser();
-        allUsers.sort(Comparator.comparingDouble(User::getConnectNumber));
-        return allUsers;
-
     }
 
 //    از این تابع که درصد شباهت رو بررسی میکنه هم میتونی استفاده کنی (امتیازی)

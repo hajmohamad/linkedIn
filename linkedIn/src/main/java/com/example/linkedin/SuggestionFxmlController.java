@@ -8,11 +8,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 
 import java.net.URL;
 import java.util.*;
@@ -94,14 +98,13 @@ public class SuggestionFxmlController implements Initializable {
          ap.setStyle("-fx-border-color: #8d8888; -fx-border-radius: 20px; -fx-border-width: 2px;");
 
          VBox.setMargin(ap, new javafx.geometry.Insets(5.0, 15, 5.0, 5.0));
-         ImageView userImage = new ImageView(user.getImage());
-         userImage.setFitHeight(48.0);
-         userImage.setFitWidth(48.0);
-         userImage.setLayoutX(14.0);
-         userImage.setLayoutY(11.0);
-         userImage.setPickOnBounds(true);
-         userImage.setPreserveRatio(true);
-
+         ImagePattern userImage = new ImagePattern(user.getImage());
+         Circle iv_profile = new Circle(23);
+         iv_profile.setFill(userImage);
+         iv_profile.setEffect(new DropShadow(20, Color.BLACK));
+         iv_profile.setPickOnBounds(true);
+         iv_profile.setLayoutX(35);
+         iv_profile.setLayoutY(35);
          Label label1 = new Label(user.getID());
          label1.setPrefHeight(13.0);
          label1.setPrefWidth(98.0);
@@ -148,7 +151,7 @@ public class SuggestionFxmlController implements Initializable {
 
          });
 
-         ap.getChildren().addAll(userImage,Name, label1, addImage);
+         ap.getChildren().addAll(iv_profile,Name, label1, addImage);
          return ap;
      }
      public void filterPane() {

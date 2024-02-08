@@ -57,16 +57,23 @@ public class LinkedIn extends Application {
         User ehsan=new User("ehsan", "1", "ehsan", "2001/03/03", "shirvan", "it", "isfahan");
         ehsan.setImagePath(Paths.get("src/main/resources/com/example/linkedin/profile/ehsan.jpg").toAbsolutePath().normalize().toString());
         adminController.addUser(ehsan);
-        User ramezon=new User("ramezon", "2", "ramezon", "2001/03/03", "shirvan", "it", "isfahan");
+        User ramezon=new User("ramezani", "2", "ramezani", "2001/03/03", "shirvan", "it", "isfahan");
         ramezon.setImagePath(Paths.get("src/main/resources/com/example/linkedin/profile/ramezon.jpg").toAbsolutePath().normalize().toString());
         adminController.addUser(ramezon);
+        User amirali=new User("amirali", "2", "amirali", "2001/03/03", "shirvan", "it", "isfahan");
+        amirali.setImagePath(Paths.get("src/main/resources/com/example/linkedin/profile/amirali.jpg").toAbsolutePath().normalize().toString());
+        adminController.addUser(amirali);
         User erf=new User("erf", "3", "erf", "2001/03/03", "shirvan", "it", "isfahan");
-        erf.setImagePath(Paths.get("src/main/resources/com/example/linkedin/profile/ramezon.jpg").toAbsolutePath().normalize().toString());
+        erf.setImagePath(Paths.get("src/main/resources/com/example/linkedin/profile/erf.jpg").toAbsolutePath().normalize().toString());
         adminController.addUser(erf);
         adminController.addConnection(a,ehsan);
-        adminController.addConnection(a,ramezon);
+        adminController.addConnection(a,amirali);
+      //  adminController.addConnection(a,ramezon);
         adminController.addConnection(a,erf);
-        ehsan.setPosts(new Post(Paths.get("src/main/resources/com/example/linkedin/image/p1.jpg").toAbsolutePath().normalize().toString(),ehsan,"hidasjskjdaljdsalkjksldajkljd nadsj djskajksdajk"));
+        ramezon.setPosts(new Post(Paths.get("src/main/resources/com/example/linkedin/PostImage/ramezani-0.jpg").toAbsolutePath().normalize().toString(),ramezon,"خب، پنجشنبه شب شد و قرار شد در مورد فتح تپه بنیاد نخبگان به شما خبر بدیم \uD83D\uDE0C"));
+        ramezon.setPosts(new Post(Paths.get("src/main/resources/com/example/linkedin/PostImage/ramezani-1.jpg").toAbsolutePath().normalize().toString(),ramezon,"این هم عکس یادگاری با ترمکی\u200Cهای مبانی یا بهتر بگم مبانی\u200Cهای ترمکی \uD83D\uDE00"));
+        amirali.setPosts(new Post(Paths.get("src/main/resources/com/example/linkedin/PostImage/amirali-0.jpg").toAbsolutePath().normalize().toString(),amirali,"از ناملایمتی های تقدیر "));
+
 
     }
 

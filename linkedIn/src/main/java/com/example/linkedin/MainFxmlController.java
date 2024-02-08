@@ -61,10 +61,9 @@ public void menuBar(){
 
     }
     public String s(){
-        for(User u: AdminController.getInstance().getAllUserConnections(mainUser)){
+        for(User u: mainUser.getMyConnection()){
             for(Post p:u.getPosts()){
                 vbox_posts.getChildren().add(p.makeAnchorPane());
-return "s";
             }
 
         }

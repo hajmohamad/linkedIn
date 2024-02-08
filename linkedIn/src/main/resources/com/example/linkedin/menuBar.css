@@ -1,5 +1,5 @@
 #vbox_menuBar{
-    -fx-max-width: 287 !important;
+    -fx-max-width: 290 !important;
     -fx-background-color: #e3dede;
     -fx-background-radius: 0 0 30 30;
     -fx-border-width: 1px;
@@ -21,12 +21,6 @@
 
 }
 
-
-#ic_explore{
-    -fx-margin:0 0 0 10;
-
-
-}
 #ic_plus:hover{
     -fx-min-width: 57;
     -fx-border-radius: 0 0 30 30;

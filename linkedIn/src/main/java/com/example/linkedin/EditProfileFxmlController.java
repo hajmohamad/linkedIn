@@ -8,11 +8,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
 import javafx.stage.FileChooser;
 
@@ -27,8 +31,10 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 public class EditProfileFxmlController implements Initializable {
+
     @FXML
-    private ImageView ImageView_profile;
+    private Circle ci_image;
+    private Image ImageView_profile;
     @FXML
     private AnchorPane ap_edit;
     @FXML
@@ -129,7 +135,7 @@ public class EditProfileFxmlController implements Initializable {
             File a=new File(s);
             if (a.exists() && !a.isDirectory()) {
                 boolean success = a.delete();}
-        File z=new File(ImageView_profile.getImage().getUrl());
+        File z=new File(ImageView_profile.getUrl());
         try {
             Files.copy(z.toPath(),a.toPath());
         } catch (IOException e) {
@@ -167,12 +173,15 @@ public class EditProfileFxmlController implements Initializable {
             File sourceFile = fileChooser.showOpenDialog(PagesController.baseStage);
             if (sourceFile != null) {
                 changed=true;
-                    ImageView_profile.setImage(new Image(sourceFile.toString()));
-
+                    ImageView_profile=new Image(sourceFile.toString());
+                ImagePattern imagePattern=new ImagePattern(ImageView_profile);
+                ci_image.setFill(imagePattern);
             }
         });
     }
 
+    @FXML
+    private VBox vbox_personal;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -182,20 +191,23 @@ public class EditProfileFxmlController implements Initializable {
         mainUser = userController.getMainUser();
         menuBar();
         Map = new HashMap<>();
-        ImageView_profile.setImage(userController.getMainUser().getImage());
+        ImageView_profile=(userController.getMainUser().getImage());
         editPersonal();
         specialties();
         lbl_connectionNumber.setText(String.valueOf(AdminController.getInstance().getAllUserConnections(mainUser).size()));
         lbl_name.setText(userController.getName());
-        Polygon clip = new Polygon(
-                0, 0,
-                150, 0,
-                150, 150,
-                0, 150
-        );
+        ImagePattern imagePattern=new ImagePattern(ImageView_profile);
+        ci_image.setFill(imagePattern);
+        DropShadow dropShadow = new DropShadow();
+        dropShadow.setOffsetY(5.0);
+        dropShadow.setOffsetX(5.0);
+        dropShadow.setColor(Color.BLACK);
+        vbox_specialties.setEffect(dropShadow);
+        vbox_personal.setEffect(dropShadow);
+
 
         // Set the clip of the image view to the polygon
-        ImageView_profile.setClip(clip);
+
     }
 
     private UserController userController = UserController.getInstance();

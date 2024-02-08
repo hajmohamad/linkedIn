@@ -1,4 +1,5 @@
 #ap_login{
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0.5, 0, 2);
     -fx-background-color:  #3a92e4;
 }
 #ap_login:hover{
@@ -8,6 +9,7 @@
     -fx-background-color: #381219;
 }
 #ap_edit{
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0.5, 0, 2);
     -fx-background-color:  #3a92e4;
 }
 #ap_edit:hover{
@@ -17,6 +19,7 @@
     -fx-background-color: #381219;
 }
 #ap_signup{
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0.5, 0, 2);
     -fx-background-color:  #3a92e4;
 }
 #ap_signup:hover{

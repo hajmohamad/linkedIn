@@ -1,20 +1,26 @@
 package Model.graph;
 
+import Controller.UserController;
 import javafx.scene.control.Label;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
 
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Post {
-    private int like;
+    private List<User> userLiked;
     private String image;
     private User userPostIt;
     private String description;
@@ -22,7 +28,7 @@ public class Post {
 
 
     public Post(String image, User userPostIt, String description) {
-        this.like = 0;
+        this.userLiked=new ArrayList<>();
         this.image = image;
         this.userPostIt = userPostIt;
         this.description = description;
@@ -36,47 +42,53 @@ public class Post {
             AnchorPane anchorPane = new AnchorPane();
             anchorPane.setMaxHeight(327.0);
             anchorPane.setPrefHeight(320.0);
-            anchorPane.setPrefWidth(282.0);
-            anchorPane.setStyle("-fx-background-color: #efe8e8; -fx-border-color: #948b8b; -fx-border-width: 3px; -fx-border-radius: 4px; -fx-background-radius: 6;");
+            anchorPane.setPrefWidth(270);
+        anchorPane.setMinWidth(270);
+
+        anchorPane.setStyle("-fx-background-color: #efe8e8;  -fx-border-radius: 6px; -fx-background-radius: 6;");
 
             ImageView iv_postImage = new ImageView(image);
             iv_postImage.setFitHeight(159.0);
-            iv_postImage.setFitWidth(282.0);
+            iv_postImage.setFitWidth(278);
+
             iv_postImage.setPickOnBounds(true);
             iv_postImage.setPreserveRatio(true);
-            AnchorPane.setLeftAnchor(iv_postImage, 0.0);
-            AnchorPane.setRightAnchor(iv_postImage, 0.0);
+            AnchorPane.setLeftAnchor(iv_postImage, 20.0);
+            AnchorPane.setRightAnchor(iv_postImage, 2.0);
             AnchorPane.setTopAnchor(iv_postImage, 46.0);
 
-            ImageView iv_profile = new ImageView(userPostIt.getImage());
-            iv_profile.setFitHeight(39.0);
-            iv_profile.setFitWidth(39.0);
+            ImagePattern pattern = new ImagePattern(userPostIt.getImage());
+            Circle iv_profile = new Circle(18);
+            iv_profile.setFill(pattern);
+            iv_profile.setEffect(new DropShadow(20, Color.BLACK));
             iv_profile.setPickOnBounds(true);
-            iv_profile.setPreserveRatio(true);
             AnchorPane.setBottomAnchor(iv_profile, 271.0);
-            AnchorPane.setLeftAnchor(iv_profile, 4.0);
+            AnchorPane.setLeftAnchor(iv_profile, 8.0);
             AnchorPane.setTopAnchor(iv_profile, 4.0);
-        Polygon clip = new Polygon(
-                0, 0,
-                150, 0,
-                150, 150,
-                0, 150
-        );
-            iv_profile.setClip(clip);
-            ImageView icon_like = new ImageView(new Image(path("src/main/resources/com/example/linkedin/image/icon/heart.png")));
+
+
+            ImageView icon_like = new ImageView();
+        if(!userLiked.contains(UserController.mainUser)){
+            icon_like.setImage( new Image(path("src/main/resources/com/example/linkedin/image/icon/heart.png")));
+        }
+        else{
+            icon_like.setImage( new Image(path("src/main/resources/com/example/linkedin/image/icon/redheart.png")));
+        }
             icon_like.setOnMouseClicked(event -> {
-                if(like%2==0){
-                like++;
-                icon_like.setImage( new Image(path("src/main/resources/com/example/linkedin/image/icon/redheart.png")));}
+                if(userLiked.contains(UserController.mainUser)){
+                    userLiked.remove(UserController.mainUser);
+                    icon_like.setImage( new Image(path("src/main/resources/com/example/linkedin/image/icon/heart.png")));
+                }
                 else{
-                    like++;
-                    icon_like.setImage( new Image(path("image/icon/heart.png")));}
+                    userLiked.add(UserController.mainUser);
+                    icon_like.setImage( new Image(path("src/main/resources/com/example/linkedin/image/icon/redheart.png")));
+                }
 
             });
             icon_like.setFitHeight(24.0);
             icon_like.setFitWidth(30.0);
             icon_like.setLayoutX(15.0);
-            icon_like.setLayoutY(197.0);
+            icon_like.setLayoutY(213);
             icon_like.setPickOnBounds(true);
             icon_like.setPreserveRatio(true);
 
@@ -91,7 +103,7 @@ public class Post {
             icon_coment.setFitHeight(24.0);
             icon_coment.setFitWidth(30.0);
             icon_coment.setLayoutX(50.0);
-            icon_coment.setLayoutY(197.0);
+            icon_coment.setLayoutY(213);
             icon_coment.setPickOnBounds(true);
             icon_coment.setPreserveRatio(true);
 
@@ -99,23 +111,19 @@ public class Post {
             icon_send.setFitHeight(24.0);
             icon_send.setFitWidth(30.0);
             icon_send.setLayoutX(86.0);
-            icon_send.setLayoutY(197.0);
+            icon_send.setLayoutY(213);
             icon_send.setPickOnBounds(true);
             icon_send.setPreserveRatio(true);
 
-            TextFlow textFlow_description=new TextFlow();
-        Text text1 = new Text(description.substring(0,description.length()/2));
-        text1.setStyle("-fx-font-weight: bold");
-
-        Text text2 = new Text(description.substring(description.length()/2,description.length()-1));
-        text2.setStyle("-fx-font-weight: regular");
-
-        textFlow_description.getChildren().addAll(text1, text2);
+            Label textFlow_description=new Label(description);
+            textFlow_description.setWrapText(true);
         textFlow_description.setLayoutX(10);
-        textFlow_description.setLayoutY(221);
+        textFlow_description.setLayoutY(251);
         textFlow_description.setLineSpacing(0.5);
         textFlow_description.prefHeight(88);
-        textFlow_description.prefWidth(271);
+        textFlow_description.prefWidth(100);
+        textFlow_description.setMaxWidth(250);
+
         anchorPane.getChildren().add(textFlow_description);
         anchorPane.getChildren().add(icon_coment);
         anchorPane.getChildren().add(icon_send);
@@ -124,7 +132,8 @@ public class Post {
         anchorPane.getChildren().add(icon_like);
         anchorPane.getChildren().add(iv_postImage);
         anchorPane.getChildren().add(lbl_name);
-
+        anchorPane.setEffect(new DropShadow(20, Color.BLACK));
+VBox.setMargin(anchorPane, new javafx.geometry.Insets(11, 5, 3, 5));
 
 
 
